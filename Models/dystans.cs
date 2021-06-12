@@ -11,8 +11,7 @@ namespace CarLeasing.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class dystans
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,9 +19,8 @@ namespace CarLeasing.Models
         {
             this.zamowienie = new HashSet<zamowienie>();
         }
-        
+    
         public int id_dystans { get; set; }
-        [Required]
         public int ilosc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
