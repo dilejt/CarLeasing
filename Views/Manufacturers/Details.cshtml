@@ -1,0 +1,16 @@
+﻿@model CarLeasing.Models.marka
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <div class="logo col-md-3 col-sm-6 text-center">
+        <img class="img-fluid" src=@Html.DisplayFor(model => model.logo) /> <span class="pl-2">@Html.DisplayFor(model => model.nazwa)</span>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-12">
+        @Html.DisplayFor(model => model.opis)
+    </div>
+</div>
+

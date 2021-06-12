@@ -1,24 +1,49 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('Font/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto-BlackItalic';
+    src: url('Font/Roboto/Roboto-BlackItalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'GothamMedium';
+    src: url('Font/Gotham/GothamMedium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto-BoldItalic';
+    src: url('Font/Roboto/Roboto-BoldItalic.ttf') format('truetype');
+}
+body {
+    font-family: 'Roboto-Regular', sans-serif
+}
+nav {
+    z-index: 1000;
+    background: #111;
+    margin-bottom: 50px;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #f56f46;
+    color: #111;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
+
+nav a {
+    font-weight: 600;
+}
+
+.btnOrange {
+    background: #f56f46;
+    color: #fff;
+    font-weight: 600;
+}
+

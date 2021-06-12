@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CarLeasing.Models.marka>
+<link href="~/Content/Manufacturers.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="logo offset-md-1 col-md-2 col-sm-6 text-center rounded">
+        <a href="@Url.Action("Details", "Manufacturers", new { id = item.id_marka })">
+            <img src=@item.logo />
+            <div class="overlay">
+                <div class="text">@item.nazwa</div>
+            </div>
+        </a>
+    </div>
+    }
+</div>

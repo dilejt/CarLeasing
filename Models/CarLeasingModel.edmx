@@ -32,6 +32,8 @@
           </Key>
           <Property Name="id_marka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="1650" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="model">
           <Key>
@@ -77,16 +79,15 @@
             <PropertyRef Name="id_parametr" />
           </Key>
           <Property Name="id_parametr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="opis" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="1650" Nullable="false" />
           <Property Name="rok_produkcji" Type="int" Nullable="false" />
           <Property Name="przebieg" Type="int" Nullable="false" />
           <Property Name="pojemnosc_bagaznika" Type="int" Nullable="false" />
           <Property Name="siedzenie_id_siedzenie" Type="int" Nullable="false" />
           <Property Name="opona_id_opona" Type="int" Nullable="false" />
-          <Property Name="model_id_model" Type="int" Nullable="false" />
-          <Property Name="marka_id_marka" Type="int" Nullable="false" />
           <Property Name="skrzynia_id_skrzynia" Type="int" Nullable="false" />
           <Property Name="nadwozie_id_nadwozie" Type="int" Nullable="false" />
+          <Property Name="model_id_model" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="platnosc">
           <Key>
@@ -100,7 +101,7 @@
             <PropertyRef Name="id_rola" />
           </Key>
           <Property Name="id_rola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nazwa" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="32" />
         </EntityType>
         <EntityType Name="samochod">
           <Key>
@@ -131,7 +132,7 @@
           </Key>
           <Property Name="id_silnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="moc" Type="float" Nullable="false" />
-          <Property Name="spalanie" Type="float" />
+          <Property Name="spalanie" Type="float" Nullable="false" />
           <Property Name="pojemnosc" Type="float" Nullable="false" />
           <Property Name="emisja" Type="float" Nullable="false" />
           <Property Name="przyspieszenie" Type="float" Nullable="false" />
@@ -149,11 +150,11 @@
             <PropertyRef Name="id_uzytkownik" />
           </Key>
           <Property Name="id_uzytkownik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="imie" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="nazwisko" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="128" Nullable="false" />
-          <Property Name="telefon" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="haslo" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="64" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="64" />
+          <Property Name="email" Type="varchar" MaxLength="128" />
+          <Property Name="telefon" Type="varchar" MaxLength="16" />
+          <Property Name="haslo" Type="varchar" MaxLength="32" />
           <Property Name="rola_id_rola" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="zamowienie">
@@ -174,7 +175,7 @@
             <PropertyRef Name="id_zdjecie" />
           </Key>
           <Property Name="id_zdjecie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="url" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="128" />
           <Property Name="samochod_id_samochod" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="model_marka_FK">
@@ -222,18 +223,6 @@
             </Principal>
             <Dependent Role="opona">
               <PropertyRef Name="sezon_id_sezon" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="parametr_marka_FK">
-          <End Role="marka" Type="Self.marka" Multiplicity="1" />
-          <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="marka">
-              <PropertyRef Name="id_marka" />
-            </Principal>
-            <Dependent Role="parametr">
-              <PropertyRef Name="marka_id_marka" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -454,10 +443,6 @@
             <End Role="sezon" EntitySet="sezon" />
             <End Role="opona" EntitySet="opona" />
           </AssociationSet>
-          <AssociationSet Name="parametr_marka_FK" Association="Self.parametr_marka_FK">
-            <End Role="marka" EntitySet="marka" />
-            <End Role="parametr" EntitySet="parametr" />
-          </AssociationSet>
           <AssociationSet Name="parametr_model_FK" Association="Self.parametr_model_FK">
             <End Role="model" EntitySet="model" />
             <End Role="parametr" EntitySet="parametr" />
@@ -554,8 +539,9 @@
           </Key>
           <Property Name="id_marka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nazwa" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="1650" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logo" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="model" Relationship="Self.model_marka_FK" FromRole="marka" ToRole="model" />
-          <NavigationProperty Name="parametr" Relationship="Self.parametr_marka_FK" FromRole="marka" ToRole="parametr" />
         </EntityType>
         <EntityType Name="model">
           <Key>
@@ -610,17 +596,15 @@
             <PropertyRef Name="id_parametr" />
           </Key>
           <Property Name="id_parametr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="opis" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="1650" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="rok_produkcji" Type="Int32" Nullable="false" />
           <Property Name="przebieg" Type="Int32" Nullable="false" />
           <Property Name="pojemnosc_bagaznika" Type="Int32" Nullable="false" />
           <Property Name="siedzenie_id_siedzenie" Type="Int32" Nullable="false" />
           <Property Name="opona_id_opona" Type="Int32" Nullable="false" />
-          <Property Name="model_id_model" Type="Int32" Nullable="false" />
-          <Property Name="marka_id_marka" Type="Int32" Nullable="false" />
           <Property Name="skrzynia_id_skrzynia" Type="Int32" Nullable="false" />
           <Property Name="nadwozie_id_nadwozie" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="marka" Relationship="Self.parametr_marka_FK" FromRole="parametr" ToRole="marka" />
+          <Property Name="model_id_model" Type="Int32" Nullable="false" />
           <NavigationProperty Name="model" Relationship="Self.parametr_model_FK" FromRole="parametr" ToRole="model" />
           <NavigationProperty Name="nadwozie" Relationship="Self.parametr_nadwozie_FK" FromRole="parametr" ToRole="nadwozie" />
           <NavigationProperty Name="opona" Relationship="Self.parametr_opona_FK" FromRole="parametr" ToRole="opona" />
@@ -641,7 +625,7 @@
             <PropertyRef Name="id_rola" />
           </Key>
           <Property Name="id_rola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nazwa" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwa" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="uzytkownik" Relationship="Self.uzytkownik_rola_FK" FromRole="rola" ToRole="uzytkownik" />
         </EntityType>
         <EntityType Name="samochod">
@@ -679,7 +663,7 @@
           </Key>
           <Property Name="id_silnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="moc" Type="Double" Nullable="false" />
-          <Property Name="spalanie" Type="Double" />
+          <Property Name="spalanie" Type="Double" Nullable="false" />
           <Property Name="pojemnosc" Type="Double" Nullable="false" />
           <Property Name="emisja" Type="Double" Nullable="false" />
           <Property Name="przyspieszenie" Type="Double" Nullable="false" />
@@ -700,11 +684,11 @@
             <PropertyRef Name="id_uzytkownik" />
           </Key>
           <Property Name="id_uzytkownik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="imie" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nazwisko" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telefon" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="haslo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="haslo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="rola_id_rola" Type="Int32" Nullable="false" />
           <NavigationProperty Name="rola" Relationship="Self.uzytkownik_rola_FK" FromRole="uzytkownik" ToRole="rola" />
           <NavigationProperty Name="zamowienie" Relationship="Self.zamowienie_uzytkownik_FK" FromRole="uzytkownik" ToRole="zamowienie" />
@@ -732,7 +716,7 @@
             <PropertyRef Name="id_zdjecie" />
           </Key>
           <Property Name="id_zdjecie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="url" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
           <Property Name="samochod_id_samochod" Type="Int32" Nullable="false" />
           <NavigationProperty Name="samochod" Relationship="Self.zdjecie_samochod_FK" FromRole="zdjecie" ToRole="samochod" />
         </EntityType>
@@ -780,18 +764,6 @@
               <PropertyRef Name="id_marka" />
             </Principal>
             <Dependent Role="model">
-              <PropertyRef Name="marka_id_marka" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="parametr_marka_FK">
-          <End Role="marka" Type="Self.marka" Multiplicity="1" />
-          <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="marka">
-              <PropertyRef Name="id_marka" />
-            </Principal>
-            <Dependent Role="parametr">
               <PropertyRef Name="marka_id_marka" />
             </Dependent>
           </ReferentialConstraint>
@@ -1013,10 +985,6 @@
             <End Role="marka" EntitySet="marka" />
             <End Role="model" EntitySet="model" />
           </AssociationSet>
-          <AssociationSet Name="parametr_marka_FK" Association="Self.parametr_marka_FK">
-            <End Role="marka" EntitySet="marka" />
-            <End Role="parametr" EntitySet="parametr" />
-          </AssociationSet>
           <AssociationSet Name="model_silnik_FK" Association="Self.model_silnik_FK">
             <End Role="silnik" EntitySet="silnik" />
             <End Role="model" EntitySet="model" />
@@ -1113,6 +1081,8 @@
               <MappingFragment StoreEntitySet="marka">
                 <ScalarProperty Name="id_marka" ColumnName="id_marka" />
                 <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1170,10 +1140,9 @@
                 <ScalarProperty Name="pojemnosc_bagaznika" ColumnName="pojemnosc_bagaznika" />
                 <ScalarProperty Name="siedzenie_id_siedzenie" ColumnName="siedzenie_id_siedzenie" />
                 <ScalarProperty Name="opona_id_opona" ColumnName="opona_id_opona" />
-                <ScalarProperty Name="model_id_model" ColumnName="model_id_model" />
-                <ScalarProperty Name="marka_id_marka" ColumnName="marka_id_marka" />
                 <ScalarProperty Name="skrzynia_id_skrzynia" ColumnName="skrzynia_id_skrzynia" />
                 <ScalarProperty Name="nadwozie_id_nadwozie" ColumnName="nadwozie_id_nadwozie" />
+                <ScalarProperty Name="model_id_model" ColumnName="model_id_model" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

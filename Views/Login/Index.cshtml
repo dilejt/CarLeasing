@@ -1,63 +1,66 @@
-﻿@model IEnumerable<CarLeasing.Models.uzytkownik>
-
+﻿@model CarLeasing.Models.uzytkownik
+<link href="~/Content/Login.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="login-block">
+    <div class="container px-0">
+        <div class="row">
+            <div class="col-md-4 text-center text-md-left login-sec">
+                <h2 class="pt-4 text-center">Logowanie</h2>
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="pl-md-4 form-group">
+                        @Html.LabelFor(m => m.email, "Email")
+                        @Html.TextBoxFor(m => m.email, "", new { @class = "form-control mx-auto", @placeholder = "Email" })
+                    </div>
+                    <div class="pl-md-4 form-group">
+                        @Html.LabelFor(m => m.haslo, "Hasło")
+                        @Html.PasswordFor(m => m.haslo, new { @class = "form-control mx-auto", @placeholder = "Hasło" })
+                    </div>
+                    if (ViewBag.error != null)
+                    {
+                        <span class="ml-0 ml-md-2 badge badge-danger">@ViewBag.error</span>
+                    }
+                    <div class="form-check">
+                        <button type="submit" class="mb-2 mr-3 mr-md-0 btn btnOrange float-right">Zaloguj</button>
+                    </div>
+                }
+            </div>
+            <div class="col-md-8 px-0 d-none d-md-block banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="~/Content/Images/Login/slide1.jpg" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Profesjonalne rozwiązania dla firm i osób prywatnych</h2>
+                                    <p>Auta dostosowane do Twoich potrzeb wraz z dodatkowymi pakietami.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="~/Content/Images/Login/slide2.jpg" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>Spełnij swoje marzenia</h2>
+                                    <p>Daj się ponieść fantazji wybierając jeden z najnowszych modeli.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.imie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nazwisko)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.haslo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rola.nazwa)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.imie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nazwisko)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.haslo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rola.nazwa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_uzytkownik }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_uzytkownik }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_uzytkownik })
-        </td>
-    </tr>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-</table>

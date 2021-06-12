@@ -1,0 +1,40 @@
+﻿.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.register-block {
+    background: linear-gradient(to bottom, #f56f46, #de6262);
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+}
+.register-block img {
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+.register-block .container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 22px 14px 0px rgb(0 0 0 / 10%);
+}
+
+.register-sec h2 {
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 30px;
+    color: #f56f46;
+}
+
+.register-sec h2:after {
+    content: " ";
+    width: 100px;
+    height: 5px;
+    background: #f56f46;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto
+}

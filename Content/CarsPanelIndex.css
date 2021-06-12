@@ -1,0 +1,24 @@
+﻿.emptyDiv{
+    background: gray;
+    min-height: 374.3px;
+    color: initial;
+}
+.emptyDiv:hover {
+    text-decoration: none;
+    color: white;
+    background: #f56f46;
+}
+.emptyDiv::after{
+    content:"+";
+    top: 40%;
+    left: 45%;
+    position: absolute;
+    font-size: 50px;
+}
+.emptyDiv:hover::after{
+    content:"+";
+    top: 40%;
+    left: 45%;
+    position: absolute;
+    font-size: 50px;
+}

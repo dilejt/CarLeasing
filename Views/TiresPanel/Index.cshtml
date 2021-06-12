@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CarLeasing.Models.opona>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p class="font-weight-bold">
+    @Html.ActionLink("Dodaj", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Model
+            </th>
+            <th>
+                Firma
+            </th>
+            <th>
+                Sezon
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firma.nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sezon.nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.id_opona }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.id_opona })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

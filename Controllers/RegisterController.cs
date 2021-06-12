@@ -14,33 +14,17 @@ namespace CarLeasing.Controllers
     {
         private CarLeasingEntities db = new CarLeasingEntities();
 
-        // GET: Register
+        // GET: Index
         public ActionResult Index()
         {
-            var uzytkownik = db.uzytkownik.Include(u => u.rola);
-            return View(uzytkownik.ToList());
-        }
-
-        // GET: Register/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            if (Session["UserId"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Index");
             }
-            uzytkownik uzytkownik = db.uzytkownik.Find(id);
-            if (uzytkownik == null)
+            else
             {
-                return HttpNotFound();
+                return View();
             }
-            return View(uzytkownik);
-        }
-
-        // GET: Register/Create
-        public ActionResult Create()
-        {
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa");
-            return View();
         }
 
         // POST: Register/Create
@@ -48,85 +32,25 @@ namespace CarLeasing.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_uzytkownik,imie,nazwisko,email,telefon,haslo,rola_id_rola")] uzytkownik uzytkownik)
+        public ActionResult Index(/*[Bind(Include = "id_uzytkownik,imie,nazwisko,email,telefon,haslo,rola_id_rola")]*/ uzytkownik _uzytkownik)
         {
-            if (ModelState.IsValid)
+            var check = db.uzytkownik.FirstOrDefault(s => s.email == _uzytkownik.email);
+            if (check == null)
             {
-                db.uzytkownik.Add(uzytkownik);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _uzytkownik.rola_id_rola = 1;
+                    db.uzytkownik.Add(_uzytkownik);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Index");
+                }
             }
-
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa", uzytkownik.rola_id_rola);
-            return View(uzytkownik);
-        }
-
-        // GET: Register/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
+            else
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.errorEmail = "Podany email jest zajęty!";
             }
-            uzytkownik uzytkownik = db.uzytkownik.Find(id);
-            if (uzytkownik == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa", uzytkownik.rola_id_rola);
-            return View(uzytkownik);
-        }
-
-        // POST: Register/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_uzytkownik,imie,nazwisko,email,telefon,haslo,rola_id_rola")] uzytkownik uzytkownik)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(uzytkownik).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa", uzytkownik.rola_id_rola);
-            return View(uzytkownik);
-        }
-
-        // GET: Register/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            uzytkownik uzytkownik = db.uzytkownik.Find(id);
-            if (uzytkownik == null)
-            {
-                return HttpNotFound();
-            }
-            return View(uzytkownik);
-        }
-
-        // POST: Register/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            uzytkownik uzytkownik = db.uzytkownik.Find(id);
-            db.uzytkownik.Remove(uzytkownik);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            ModelState.Clear();
+            return View(_uzytkownik);
         }
     }
 }

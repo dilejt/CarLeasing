@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CarLeasing.Models.samochod>
+<link href="~/Content/CarsPanelIndex.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row d-flex justify-content-left mx-auto">
+    @foreach (var item in Model)
+    {
+        <div class="card mt-3 mx-3" style="width: 18rem;">
+            @foreach (var value in item.zdjecie)
+            {
+                <img src=@value.url class="card-img-top" alt="">
+                break;
+            }
+            <div class="card-body">
+                <div class="card-title"><h5>@Html.DisplayFor(modelItem => item.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.parametr.model.nazwa)<small> @Html.DisplayFor(modelItem => item.parametr.rok_produkcji)r.</small></h5></div>
+                <h6>@Html.DisplayFor(modelItem => item.kolor.nazwa)</h6>
+                <div class="card-text">Cena: @Html.DisplayFor(modelItem => item.cena) zł</div>
+                <p>Przebieg: @Html.DisplayFor(modelItem => item.parametr.przebieg) km</p>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_samochod }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.id_samochod }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_samochod }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    }
+    <a class="card mt-3 mx-3 text-center emptyDiv" style="width: 18rem;" href="@Url.Action("Create")">
+        <div class="card-body">
+            <div class="card-title"><h1>Dodaj</h1></div>
+        </div>
+    </a>
+</div>

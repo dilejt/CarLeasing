@@ -1,0 +1,64 @@
+﻿nav {
+    position: absolute !important;
+    background: initial !important;
+}
+header {
+    background-image: url('Images/Index/header.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    height: 80vh;
+    color: white;
+    font-family: 'GothamMedium', sans-serif;
+}
+header::before {
+    content: '';
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.57) 37%, rgba(255,255,255,0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    z-index: 800;
+}
+header div{
+    z-index: 801;
+}
+.headerText{
+    text-align: center;
+    margin-top: 54vh;
+    font-size: 36px;
+    font-weight: 700;
+}
+.headerWord {
+    font-family: 'Roboto-BlackItalic', sans-serif;
+}
+.carCategories {
+    background-image: url('Images/Index/offer.jpg');
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+    background-size: cover;
+}
+.carCategories::after {
+    content: '';
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.57) 37%, rgba(255,255,255,0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    z-index: 800;
+}
+.testItOut {
+    color: #f56f46;
+    background-image: -webkit-linear-gradient( 270deg, rgb(255 255 255) 50%, #f56f46 50%) !important;
+}
+.race div:nth-child(1){
+    background-color: #111;
+}
+.race div:nth-child(2) img{
+    margin-left: -15px;
+}
+.cons {
+    background-color: #f56f46;
+}

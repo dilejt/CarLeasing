@@ -1,0 +1,81 @@
+﻿@model IEnumerable<CarLeasing.Models.samochod>
+<link href="~/Content/Index.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+<header class="row">
+    <div class="col-12">
+        <div class="headerText"><span class="headerWord">Wielkie </span>kroki wymagają <span class="headerWord">odważnych</span> decyzji</div>
+    </div>
+</header>
+<section class="row px-5 py-5">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-12 mb-3">Bogaty katalog w jednym miejscu!</div>
+                    <div class="col-4">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
+                    <div class="col-4">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="row px-5 py-5 testItOut">
+    <div class="col-lg-10 col-12 mx-auto">
+        <div class="row rounded race ml-0">
+            <div class="col-6 position-relative rounded">Poskrom jedną z maszyn i udaj się na jazdę testową już dziś!</div>
+            <div class="col-6 position-relative px-0">
+                <img class="img-fluid rounded py-5" src="~/Content/Images/Index/drive.jpg" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="row px-5 py-5 cons text-light">
+    <div class="col-12">
+        <div class="row rounded">
+            <div class="col-6">
+                <img class="img-fluid" src="~/Content/Images/Index/cons.jpg" />
+            </div>
+            <div class="col-6">Pokaż sie z klasą</div>
+        </div>
+    </div>
+</section>
+<section class="row px-5 py-5 text-light">
+    <div class="col-12">
+        Samochody
+    </div>
+</section>
+<section class="row px-5 carCategories py-5">
+    <div class="col-12 text-center">
+        Sprawdź
+    </div>
+</section>
+@section scripts{
+    <script type="text/javascript">
+        function manufacturerList() {
+            $("#model").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetModelList")',
+                    dataType: 'json',
+                    data: { id: $("#marka").val() },
+                    success: function (m) {
+                        $.each(m, function (i, item) {
+                            $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Fail.' + ex);
+                    }
+                });
+                //return false;
+        }
+        $(document).ready(function () {
+            manufacturerList();
+            $("#marka").change(function () {
+                manufacturerList();
+            })
+        });
+    </script>
+}

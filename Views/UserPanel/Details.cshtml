@@ -1,0 +1,74 @@
+﻿@model CarLeasing.Models.zamowienie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>zamowienie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.koszt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.koszt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_zlozenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_zlozenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dystans.id_dystans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dystans.id_dystans)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.okres.id_okres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.okres.id_okres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.platnosc.id_platnosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.platnosc.id_platnosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.samochod.id_samochod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.samochod.id_samochod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzytkownik.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzytkownik.imie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_zamowienie }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

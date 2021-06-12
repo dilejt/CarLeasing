@@ -1,63 +1,71 @@
-﻿@model IEnumerable<CarLeasing.Models.uzytkownik>
-
+﻿@model CarLeasing.Models.uzytkownik
+<link href="~/Content/Register.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="register-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 px-0 d-none d-md-block">
+                <img class="img-fluid" src="~/Content/Images/Register/register.jpg" />
+            </div>
+            <div class="col-md-6 register-sec text-center">
+                <h2 class="pt-4 text-center">Rejestracja</h2>
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.imie, "Imie", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.imie, new { htmlAttributes = new { @class = "form-control mx-auto", placeholder = "Imie" } })
+                            @Html.ValidationMessageFor(model => model.imie, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.nazwisko, "Nazwisko", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.nazwisko, new { htmlAttributes = new { @class = "form-control mx-auto", placeholder = "Nazwisko" } })
+                            @Html.ValidationMessageFor(model => model.nazwisko, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control mx-auto", type = "email", placeholder = "user@gmail.com" } })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                        @if (ViewBag.errorEmail != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.errorEmail</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.telefon, "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.telefon, new { htmlAttributes = new { @class = "form-control mx-auto", type = "tel", placeholder = "123-456-789", pattern = "[0-9]{3}-[0-9]{3}-[0-9]{3}" } })
+                            @Html.ValidationMessageFor(model => model.telefon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.haslo, "Hasło", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.haslo, new { htmlAttributes = new { @class = "form-control mx-auto", type = "password", placeholder = "********" } })
+                            @Html.ValidationMessageFor(model => model.haslo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Stwórz" class="btn btnOrange btn-default" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.imie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nazwisko)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.haslo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rola.nazwa)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.imie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nazwisko)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.haslo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rola.nazwa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_uzytkownik }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_uzytkownik }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_uzytkownik })
-        </td>
-    </tr>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-</table>

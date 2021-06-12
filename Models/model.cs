@@ -19,7 +19,7 @@ namespace CarLeasing.Models
         {
             this.parametr = new HashSet<parametr>();
         }
-    
+
         public int id_model { get; set; }
         public string nazwa { get; set; }
         public int marka_id_marka { get; set; }
