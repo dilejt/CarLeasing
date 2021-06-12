@@ -45,6 +45,5 @@ namespace CarLeasing.Models
         public virtual DbSet<uzytkownik> uzytkownik { get; set; }
         public virtual DbSet<zamowienie> zamowienie { get; set; }
         public virtual DbSet<zdjecie> zdjecie { get; set; }
-        public virtual DbSet<status> status { get; set; }
     }
 }

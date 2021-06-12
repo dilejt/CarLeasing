@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CarLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CarLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="dystans">
           <Key>
             <PropertyRef Name="id_dystans" />
@@ -145,13 +145,6 @@
           <Property Name="id_skrzynia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <EntityType Name="status">
-          <Key>
-            <PropertyRef Name="id_status" />
-          </Key>
-          <Property Name="id_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nazwa" Type="varchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="uzytkownik">
           <Key>
             <PropertyRef Name="id_uzytkownik" />
@@ -176,7 +169,6 @@
           <Property Name="samochod_id_samochod" Type="int" Nullable="false" />
           <Property Name="data_zlozenia" Type="date" Nullable="false" />
           <Property Name="uzytkownik_id_uzytkownik" Type="int" Nullable="false" />
-          <Property Name="status_id_status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="zdjecie">
           <Key>
@@ -390,18 +382,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="zamowienie_status_FK">
-          <End Role="status" Type="Self.status" Multiplicity="1" />
-          <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="id_status" />
-            </Principal>
-            <Dependent Role="zamowienie">
-              <PropertyRef Name="status_id_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="zamowienie_uzytkownik_FK">
           <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
           <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
@@ -444,7 +424,6 @@
           <EntitySet Name="siedzenie" EntityType="Self.siedzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="silnik" EntityType="Self.silnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="skrzynia" EntityType="Self.skrzynia" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="uzytkownik" EntityType="Self.uzytkownik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zamowienie" EntityType="Self.zamowienie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zdjecie" EntityType="Self.zdjecie" Schema="dbo" store:Type="Tables" />
@@ -516,10 +495,6 @@
             <End Role="samochod" EntitySet="samochod" />
             <End Role="zamowienie" EntitySet="zamowienie" />
           </AssociationSet>
-          <AssociationSet Name="zamowienie_status_FK" Association="Self.zamowienie_status_FK">
-            <End Role="status" EntitySet="status" />
-            <End Role="zamowienie" EntitySet="zamowienie" />
-          </AssociationSet>
           <AssociationSet Name="zamowienie_uzytkownik_FK" Association="Self.zamowienie_uzytkownik_FK">
             <End Role="uzytkownik" EntitySet="uzytkownik" />
             <End Role="zamowienie" EntitySet="zamowienie" />
@@ -529,7 +504,8 @@
             <End Role="zdjecie" EntitySet="zdjecie" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarLeasingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -734,8 +710,6 @@
           <NavigationProperty Name="platnosc" Relationship="Self.zamowienie_platnosc_FK" FromRole="zamowienie" ToRole="platnosc" />
           <NavigationProperty Name="samochod" Relationship="Self.zamowienie_samochod_FK" FromRole="zamowienie" ToRole="samochod" />
           <NavigationProperty Name="uzytkownik" Relationship="Self.zamowienie_uzytkownik_FK" FromRole="zamowienie" ToRole="uzytkownik" />
-          <Property Name="status_id_status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="status" Relationship="CarLeasingModel.zamowienie_status_FK" FromRole="zamowienie" ToRole="status" />
         </EntityType>
         <EntityType Name="zdjecie">
           <Key>
@@ -1071,32 +1045,7 @@
             <End Role="uzytkownik" EntitySet="uzytkownik" />
             <End Role="zamowienie" EntitySet="zamowienie" />
           </AssociationSet>
-          <EntitySet Name="status" EntityType="CarLeasingModel.status" />
-          <AssociationSet Name="zamowienie_status_FK" Association="CarLeasingModel.zamowienie_status_FK">
-            <End Role="status" EntitySet="status" />
-            <End Role="zamowienie" EntitySet="zamowienie" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="status">
-          <Key>
-            <PropertyRef Name="id_status" />
-          </Key>
-          <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nazwa" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="zamowienie" Relationship="CarLeasingModel.zamowienie_status_FK" FromRole="status" ToRole="zamowienie" />
-        </EntityType>
-        <Association Name="zamowienie_status_FK">
-          <End Type="CarLeasingModel.status" Role="status" Multiplicity="1" />
-          <End Type="CarLeasingModel.zamowienie" Role="zamowienie" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="id_status" />
-            </Principal>
-            <Dependent Role="zamowienie">
-              <PropertyRef Name="status_id_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1276,7 +1225,6 @@
           <EntitySetMapping Name="zamowienie">
             <EntityTypeMapping TypeName="CarLeasingModel.zamowienie">
               <MappingFragment StoreEntitySet="zamowienie">
-                <ScalarProperty Name="status_id_status" ColumnName="status_id_status" />
                 <ScalarProperty Name="id_zamowienie" ColumnName="id_zamowienie" />
                 <ScalarProperty Name="koszt" ColumnName="koszt" />
                 <ScalarProperty Name="okres_id_okres" ColumnName="okres_id_okres" />
@@ -1294,14 +1242,6 @@
                 <ScalarProperty Name="id_zdjecie" ColumnName="id_zdjecie" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="samochod_id_samochod" ColumnName="samochod_id_samochod" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="status">
-            <EntityTypeMapping TypeName="CarLeasingModel.status">
-              <MappingFragment StoreEntitySet="status">
-                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
-                <ScalarProperty Name="id_status" ColumnName="id_status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,7 +11,8 @@ namespace CarLeasing.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class marka
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +25,8 @@ namespace CarLeasing.Models
         public string nazwa { get; set; }
         public string opis { get; set; }
         public string logo { get; set; }
-    
+        public HttpPostedFileBase MarkaFile { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<model> model { get; set; }
     }

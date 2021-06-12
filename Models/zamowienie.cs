@@ -22,13 +22,11 @@ namespace CarLeasing.Models
         public int samochod_id_samochod { get; set; }
         public System.DateTime data_zlozenia { get; set; }
         public int uzytkownik_id_uzytkownik { get; set; }
-        public int status_id_status { get; set; }
     
         public virtual dystans dystans { get; set; }
         public virtual okres okres { get; set; }
         public virtual platnosc platnosc { get; set; }
         public virtual samochod samochod { get; set; }
         public virtual uzytkownik uzytkownik { get; set; }
-        public virtual status status { get; set; }
     }
 }
