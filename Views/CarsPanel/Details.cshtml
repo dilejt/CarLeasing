@@ -131,14 +131,16 @@
 <div id="modal" onclick="closeModal()" class="modal">
     <img class="modal-content" id="imgModal">
 </div>
-<script>
-    let modal = document.getElementById("modal");
-    let modalImg = document.getElementById("imgModal");
-    function showModal(imgs) {
-        modal.style.display = "block";
-        modalImg.src = imgs.src;
-    }
-    function closeModal() {
-        modal.style.display = "none";
-    }
-</script>
+@section Scripts {
+    <script>
+        let modal = document.getElementById("modal");
+        let modalImg = document.getElementById("imgModal");
+        function showModal(imgs) {
+            modal.style.display = "block";
+            modalImg.src = imgs.src;
+        }
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    </script>
+}

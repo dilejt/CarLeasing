@@ -1,0 +1,74 @@
+﻿@model CarLeasing.Models.zamowienie
+
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/CarsPanelDetails.css" rel="stylesheet" />
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Szczegóły</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Ogólne informacje</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Koszt</td>
+                            <td>@Html.DisplayFor(model => model.koszt) zł</td>
+                        </tr>
+                        <tr>
+                            <td>Data złożenia</td>
+                            <td>@Html.DisplayFor(model => model.data_zlozenia)</td>
+                        </tr>
+                        <tr>
+                            <td>Okres</td>
+                            <td>@Html.DisplayFor(model => model.okres.ilosc) mies.</td>
+                        </tr>
+                        <tr>
+                            <td>Dystans</td>
+                            <td>@Html.DisplayFor(model => model.dystans.ilosc) km</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj płatności</td>
+                            <td>co @Html.DisplayFor(model => model.platnosc.ilosc) mies.</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>@Html.DisplayFor(model => model.status.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Samochód</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Nazwa</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(model => model.samochod.parametr.model.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Kolor</td>
+                            <td>@Html.DisplayFor(model => model.samochod.kolor.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rok produkcji</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.rok_produkcji)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

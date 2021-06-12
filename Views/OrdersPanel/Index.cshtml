@@ -1,0 +1,136 @@
+﻿@model IEnumerable<CarLeasing.Models.zamowienie>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h3>Aktywne</h3>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Koszt
+            </th>
+            <th>
+                Data złożenia
+            </th>
+            <th>
+                Dystans
+            </th>
+            <th>
+                Okres
+            </th>
+            <th>
+                Rodzaj płatności
+            </th>
+            <th>
+                Samochód
+            </th>
+            <th>
+                Klient
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.status.nazwa.Equals("aktywne"))
+            {
+                <tr class="text-success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.koszt) zł
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data_zlozenia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dystans.ilosc) km
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.okres.ilosc) mies.
+                    </td>
+                    <td>
+                        co @Html.DisplayFor(modelItem => item.platnosc.ilosc) mies.
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.nazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uzytkownik.imie) @Html.DisplayFor(modelItem => item.uzytkownik.nazwisko)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.id_zamowienie }) |
+                        @Html.ActionLink("Szczegóły", "Details", new { id = item.id_zamowienie }) |
+                        @Html.ActionLink("Usuń", "Delete", new { id = item.id_zamowienie })
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+</div>
+<h3>Zakończone</h3>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Koszt
+            </th>
+            <th>
+                Data złożenia
+            </th>
+            <th>
+                Dystans
+            </th>
+            <th>
+                Okres
+            </th>
+            <th>
+                Rodzaj płatności
+            </th>
+            <th>
+                Samochód
+            </th>
+            <th>
+                Klient
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.status.nazwa.Equals("zakonczone"))
+            {
+                <tr class="text-muted">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.koszt) zł
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.data_zlozenia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dystans.ilosc) km
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.okres.ilosc) mies.
+                    </td>
+                    <td>
+                        co @Html.DisplayFor(modelItem => item.platnosc.ilosc) mies.
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.nazwa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uzytkownik.imie) @Html.DisplayFor(modelItem => item.uzytkownik.nazwisko)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edytuj", "Edit", new { id = item.id_zamowienie }) |
+                        @Html.ActionLink("Szczegóły", "Details", new { id = item.id_zamowienie }) |
+                        @Html.ActionLink("Usuń", "Delete", new { id = item.id_zamowienie })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
