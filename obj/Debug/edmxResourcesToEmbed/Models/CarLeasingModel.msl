@@ -174,6 +174,7 @@
     <EntitySetMapping Name="zamowienie">
       <EntityTypeMapping TypeName="CarLeasingModel.zamowienie">
         <MappingFragment StoreEntitySet="zamowienie">
+          <ScalarProperty Name="status_id_status" ColumnName="status_id_status" />
           <ScalarProperty Name="id_zamowienie" ColumnName="id_zamowienie" />
           <ScalarProperty Name="koszt" ColumnName="koszt" />
           <ScalarProperty Name="okres_id_okres" ColumnName="okres_id_okres" />
@@ -191,6 +192,14 @@
           <ScalarProperty Name="id_zdjecie" ColumnName="id_zdjecie" />
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="samochod_id_samochod" ColumnName="samochod_id_samochod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="CarLeasingModel.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="id_status" ColumnName="id_status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

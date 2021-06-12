@@ -214,6 +214,9 @@
     <Compile Include="Models\skrzynia.cs">
       <DependentUpon>CarLeasingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>CarLeasingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\uzytkownik.cs">
       <DependentUpon>CarLeasingModel.tt</DependentUpon>
     </Compile>
