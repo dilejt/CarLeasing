@@ -1,0 +1,247 @@
+﻿@model CarLeasing.Models.EditCarAdminPanel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Edytuj</li>
+    </ol>
+</div>
+@using (Html.BeginForm("Edit", "CarsPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_samochod)
+        <div class="col-lg-6 col-12 p-3">
+            <div class="p-4 rounded">
+                <h2 class="font-weight-bold pb-2">Ogólne informacje</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.cena, "Cena", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.cena, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.cena, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.rok_produkcji, "Rok produkcji", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.rok_produkcji, new { htmlAttributes = new { @class = "form-control", @min = "1900", @max = @DateTime.Now.Year } })
+                                    @Html.ValidationMessageFor(model => model.rok_produkcji, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_kolor, "Kolor", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_kolor", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_kolor, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.przebieg, "Przebieg", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.przebieg, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
+                                    @Html.ValidationMessageFor(model => model.przebieg, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.opis, "Opis", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.TextAreaFor(model => model.opis, new { @class = "form-control", @rows = 4 })
+                                    @Html.ValidationMessageFor(model => model.opis, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.pojemnosc_bagaznika, "Minimalna pojemność bagażnika", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.pojemnosc_bagaznika, new { htmlAttributes = new { @class = "form-control", @min = "0" } })
+                                    @Html.ValidationMessageFor(model => model.pojemnosc_bagaznika, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_siedzenie, "Liczba miejsc", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_siedzenie", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_siedzenie, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_nadwozie, "Typ nadwozia", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_nadwozie", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_nadwozie, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_skrzynia, "Rodzaj skrzyni", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_skrzynia", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_skrzynia, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 p-3">
+            <div class="p-4 rounded">
+                <h2 class="font-weight-bold pb-2">Szczegóły opon</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_firma, "Firma opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_firma", null, htmlAttributes: new { id = "firma", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_firma, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_opona, "Model opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_opona", null, htmlAttributes: new { id = "model", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_opona, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_sezon, "Rodzaj opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_sezon", null, htmlAttributes: new { id = "sezon", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_sezon, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mt-4 p-4 rounded">
+                <h2 class="font-weight-bold pb-2">Szczegóły silnika</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.spalanie, "Spalanie", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.spalanie, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.spalanie, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.moc, "Moc", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.moc, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.moc, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.pojemnosc, "Pojemność", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.pojemnosc, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.pojemnosc, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.emisja, "Emisja CO₂", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.emisja, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.emisja, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.przyspieszenie, "Przyspieszenie (od 0 do 100km/h)", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.EditorFor(model => model.przyspieszenie, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.przyspieszenie, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.id_paliwo, "Typ silnika", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    @Html.DropDownList("id_paliwo", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_paliwo, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-right pr-5">
+            <input type="submit" value="Zapisz" class="btn btn-default btnOrange ml-x" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+        $.validator.methods.range = function (value, element, param) {
+            var globalizedValue = value.replace(",", ".");
+            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+        }
+
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+        }
+
+        function manufacturerList() {
+            $("#model").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetModelList")',
+                dataType: 'json',
+                data: { id: $("#firma").val() },
+                success: function (m) {
+                    $.each(m.Result, function (i, item) {
+                        if (m.ID == item.Value)
+                            $("#model").append('<option selected="selected" value="' + item.Value + '">' + item.Text + '</option>');
+                        else
+                            $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                    });
+                    sezonList();
+                },
+                error: function (ex) {
+                    console.log('Fail.' + ex);
+                }
+            });
+        }
+        function sezonList() {
+            $("#sezon").empty();
+            if ($("#model").val()) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetSezonList")',
+                    dataType: 'json',
+                    data: { id: $("#model").val() },
+                    success: function (m) {
+                        $.each(m, function (i, item) {
+                            $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log('Fail.' + ex);
+                    }
+                });
+            }
+        }
+
+        $(document).ready(function () {
+            manufacturerList();
+            $("#firma").change(function () {
+                manufacturerList();
+            });
+            $("#model").change(function () {
+                sezonList();
+            });
+        });
+
+</script>
+}

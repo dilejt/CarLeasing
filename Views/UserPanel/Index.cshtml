@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CarLeasing.Models.zamowienie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Samochód
+        </th>
+        <th>
+            Cena
+        </th>
+        <th>
+            Dystans
+        </th>
+        <th>
+            Data złożenia
+        </th>
+        <th>
+            Płatność okresowa
+        </th>
+        <th>
+            Długość wypożyczenia
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.nazwa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.koszt) zł
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dystans.ilosc) km/rok
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.data_zlozenia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.platnosc.ilosc) mies.
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.okres.ilosc) mies.
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_zamowienie }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_zamowienie }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id_zamowienie })
+    </td>
+</tr>
+}
+
+</table>

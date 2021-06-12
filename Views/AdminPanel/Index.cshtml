@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CarLeasing.Models.samochod>
+<link href="~/Content/AdminPanel.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 mb-md-4 mb-2 justify-content-center d-flex">
+        <div class="card mx-lg-5">
+            <img src="~/Content/Images/AdminPanel/order.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Zamówienia</h5>
+                <p class="card-text">*RUD zamówienia</p>
+                @Html.ActionLink("Przejdź", "Index", "OrdersPanel", new { area = "" }, new { @class = "btn btnOrange" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-md-4 mb-2 justify-content-center d-flex">
+        <div class="card mx-lg-5">
+            <img src="~/Content/Images/AdminPanel/client.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Użytkownicy</h5>
+                <p class="card-text">*RUD użytkownicy</p>
+                @Html.ActionLink("Przejdź", "Index", "UsersPanel", new { area = "" }, new { @class = "btn btnOrange" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-md-4 mb-2 justify-content-center d-flex">
+        <div class="card mx-lg-5">
+            <img src="~/Content/Images/AdminPanel/tire.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Opony</h5>
+                <p class="card-text">CRUD opony i ich producenci</p>
+                @Html.ActionLink("Przejdź", "Index", "TiresPanel", new { area = "" }, new { @class = "btn btnOrange" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-md-4 mb-2 justify-content-center d-flex">
+        <div class="card mx-lg-5">
+            <img src="~/Content/Images/AdminPanel/cars.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Samochody</h5>
+                <p class="card-text">CRUD samochody</p>
+                @Html.ActionLink("Przejdź", "Index", "CarsPanel", new { area = "" }, new { @class = "btn btnOrange" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-md-4 mb-2 justify-content-center d-flex">
+        <div class="card mx-lg-5">
+            <img src="~/Content/Images/AdminPanel/make.jpg" class="card-img-top" />
+            <div class="card-body">
+                <h5 class="card-title">Marka</h5>
+                <p class="card-text">CRUD marki samochodów</p>
+                @Html.ActionLink("Przejdź", "Index", "ManufacturersPanel", new { area = "" }, new { @class = "btn btnOrange" })
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CarLeasingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="dystans">
+    <Key>
+      <PropertyRef Name="id_dystans" />
+    </Key>
+    <Property Name="id_dystans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="firma">
+    <Key>
+      <PropertyRef Name="id_firma" />
+    </Key>
+    <Property Name="id_firma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kolor">
+    <Key>
+      <PropertyRef Name="id_kolor" />
+    </Key>
+    <Property Name="id_kolor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="marka">
+    <Key>
+      <PropertyRef Name="id_marka" />
+    </Key>
+    <Property Name="id_marka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="opis" Type="varchar" MaxLength="1650" Nullable="false" />
+    <Property Name="logo" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="model">
+    <Key>
+      <PropertyRef Name="id_model" />
+    </Key>
+    <Property Name="id_model" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="marka_id_marka" Type="int" Nullable="false" />
+    <Property Name="silnik_id_silnik" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nadwozie">
+    <Key>
+      <PropertyRef Name="id_nadwozie" />
+    </Key>
+    <Property Name="id_nadwozie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="okres">
+    <Key>
+      <PropertyRef Name="id_okres" />
+    </Key>
+    <Property Name="id_okres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="opona">
+    <Key>
+      <PropertyRef Name="id_opona" />
+    </Key>
+    <Property Name="id_opona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="firma_id_firma" Type="int" Nullable="false" />
+    <Property Name="sezon_id_sezon" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="paliwo">
+    <Key>
+      <PropertyRef Name="id_paliwo" />
+    </Key>
+    <Property Name="id_paliwo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="parametr">
+    <Key>
+      <PropertyRef Name="id_parametr" />
+    </Key>
+    <Property Name="id_parametr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="opis" Type="varchar" MaxLength="1650" Nullable="false" />
+    <Property Name="rok_produkcji" Type="int" Nullable="false" />
+    <Property Name="przebieg" Type="int" Nullable="false" />
+    <Property Name="pojemnosc_bagaznika" Type="int" Nullable="false" />
+    <Property Name="siedzenie_id_siedzenie" Type="int" Nullable="false" />
+    <Property Name="opona_id_opona" Type="int" Nullable="false" />
+    <Property Name="skrzynia_id_skrzynia" Type="int" Nullable="false" />
+    <Property Name="nadwozie_id_nadwozie" Type="int" Nullable="false" />
+    <Property Name="model_id_model" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="platnosc">
+    <Key>
+      <PropertyRef Name="id_platnosc" />
+    </Key>
+    <Property Name="id_platnosc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rola">
+    <Key>
+      <PropertyRef Name="id_rola" />
+    </Key>
+    <Property Name="id_rola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="samochod">
+    <Key>
+      <PropertyRef Name="id_samochod" />
+    </Key>
+    <Property Name="id_samochod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cena" Type="money" Nullable="false" />
+    <Property Name="kolor_id_kolor" Type="int" Nullable="false" />
+    <Property Name="parametr_id_parametr" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sezon">
+    <Key>
+      <PropertyRef Name="id_sezon" />
+    </Key>
+    <Property Name="id_sezon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="siedzenie">
+    <Key>
+      <PropertyRef Name="id_siedzenie" />
+    </Key>
+    <Property Name="id_siedzenie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilosc" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="silnik">
+    <Key>
+      <PropertyRef Name="id_silnik" />
+    </Key>
+    <Property Name="id_silnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="moc" Type="float" Nullable="false" />
+    <Property Name="spalanie" Type="float" Nullable="false" />
+    <Property Name="pojemnosc" Type="float" Nullable="false" />
+    <Property Name="emisja" Type="float" Nullable="false" />
+    <Property Name="przyspieszenie" Type="float" Nullable="false" />
+    <Property Name="paliwo_id_paliwo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="skrzynia">
+    <Key>
+      <PropertyRef Name="id_skrzynia" />
+    </Key>
+    <Property Name="id_skrzynia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nazwa" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="uzytkownik">
+    <Key>
+      <PropertyRef Name="id_uzytkownik" />
+    </Key>
+    <Property Name="id_uzytkownik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imie" Type="varchar" MaxLength="64" />
+    <Property Name="nazwisko" Type="varchar" MaxLength="64" />
+    <Property Name="email" Type="varchar" MaxLength="128" />
+    <Property Name="telefon" Type="varchar" MaxLength="16" />
+    <Property Name="haslo" Type="varchar" MaxLength="32" />
+    <Property Name="rola_id_rola" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zamowienie">
+    <Key>
+      <PropertyRef Name="id_zamowienie" />
+    </Key>
+    <Property Name="id_zamowienie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="koszt" Type="money" Nullable="false" />
+    <Property Name="okres_id_okres" Type="int" Nullable="false" />
+    <Property Name="platnosc_id_platnosc" Type="int" Nullable="false" />
+    <Property Name="dystans_id_dystans" Type="int" Nullable="false" />
+    <Property Name="samochod_id_samochod" Type="int" Nullable="false" />
+    <Property Name="data_zlozenia" Type="date" Nullable="false" />
+    <Property Name="uzytkownik_id_uzytkownik" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zdjecie">
+    <Key>
+      <PropertyRef Name="id_zdjecie" />
+    </Key>
+    <Property Name="id_zdjecie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="128" />
+    <Property Name="samochod_id_samochod" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="model_marka_FK">
+    <End Role="marka" Type="Self.marka" Multiplicity="1" />
+    <End Role="model" Type="Self.model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marka">
+        <PropertyRef Name="id_marka" />
+      </Principal>
+      <Dependent Role="model">
+        <PropertyRef Name="marka_id_marka" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="model_silnik_FK">
+    <End Role="silnik" Type="Self.silnik" Multiplicity="1" />
+    <End Role="model" Type="Self.model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="silnik">
+        <PropertyRef Name="id_silnik" />
+      </Principal>
+      <Dependent Role="model">
+        <PropertyRef Name="silnik_id_silnik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="opona_firma_FK">
+    <End Role="firma" Type="Self.firma" Multiplicity="1" />
+    <End Role="opona" Type="Self.opona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="firma">
+        <PropertyRef Name="id_firma" />
+      </Principal>
+      <Dependent Role="opona">
+        <PropertyRef Name="firma_id_firma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="opona_sezon_FK">
+    <End Role="sezon" Type="Self.sezon" Multiplicity="1" />
+    <End Role="opona" Type="Self.opona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sezon">
+        <PropertyRef Name="id_sezon" />
+      </Principal>
+      <Dependent Role="opona">
+        <PropertyRef Name="sezon_id_sezon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="parametr_model_FK">
+    <End Role="model" Type="Self.model" Multiplicity="1" />
+    <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="model">
+        <PropertyRef Name="id_model" />
+      </Principal>
+      <Dependent Role="parametr">
+        <PropertyRef Name="model_id_model" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="parametr_nadwozie_FK">
+    <End Role="nadwozie" Type="Self.nadwozie" Multiplicity="1" />
+    <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nadwozie">
+        <PropertyRef Name="id_nadwozie" />
+      </Principal>
+      <Dependent Role="parametr">
+        <PropertyRef Name="nadwozie_id_nadwozie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="parametr_opona_FK">
+    <End Role="opona" Type="Self.opona" Multiplicity="1" />
+    <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="opona">
+        <PropertyRef Name="id_opona" />
+      </Principal>
+      <Dependent Role="parametr">
+        <PropertyRef Name="opona_id_opona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="parametr_siedzenie_FK">
+    <End Role="siedzenie" Type="Self.siedzenie" Multiplicity="1" />
+    <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="siedzenie">
+        <PropertyRef Name="id_siedzenie" />
+      </Principal>
+      <Dependent Role="parametr">
+        <PropertyRef Name="siedzenie_id_siedzenie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="parametr_skrzynia_FK">
+    <End Role="skrzynia" Type="Self.skrzynia" Multiplicity="1" />
+    <End Role="parametr" Type="Self.parametr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="skrzynia">
+        <PropertyRef Name="id_skrzynia" />
+      </Principal>
+      <Dependent Role="parametr">
+        <PropertyRef Name="skrzynia_id_skrzynia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="samochod_kolor_FK">
+    <End Role="kolor" Type="Self.kolor" Multiplicity="1" />
+    <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kolor">
+        <PropertyRef Name="id_kolor" />
+      </Principal>
+      <Dependent Role="samochod">
+        <PropertyRef Name="kolor_id_kolor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="samochod_parametr_FK">
+    <End Role="parametr" Type="Self.parametr" Multiplicity="1" />
+    <End Role="samochod" Type="Self.samochod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="parametr">
+        <PropertyRef Name="id_parametr" />
+      </Principal>
+      <Dependent Role="samochod">
+        <PropertyRef Name="parametr_id_parametr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="silnik_paliwo_FK">
+    <End Role="paliwo" Type="Self.paliwo" Multiplicity="1" />
+    <End Role="silnik" Type="Self.silnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paliwo">
+        <PropertyRef Name="id_paliwo" />
+      </Principal>
+      <Dependent Role="silnik">
+        <PropertyRef Name="paliwo_id_paliwo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uzytkownik_rola_FK">
+    <End Role="rola" Type="Self.rola" Multiplicity="1" />
+    <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rola">
+        <PropertyRef Name="id_rola" />
+      </Principal>
+      <Dependent Role="uzytkownik">
+        <PropertyRef Name="rola_id_rola" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zamowienie_dystans_FK">
+    <End Role="dystans" Type="Self.dystans" Multiplicity="1" />
+    <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dystans">
+        <PropertyRef Name="id_dystans" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="dystans_id_dystans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zamowienie_okres_FK">
+    <End Role="okres" Type="Self.okres" Multiplicity="1" />
+    <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="okres">
+        <PropertyRef Name="id_okres" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="okres_id_okres" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zamowienie_platnosc_FK">
+    <End Role="platnosc" Type="Self.platnosc" Multiplicity="1" />
+    <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="platnosc">
+        <PropertyRef Name="id_platnosc" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="platnosc_id_platnosc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zamowienie_samochod_FK">
+    <End Role="samochod" Type="Self.samochod" Multiplicity="1" />
+    <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="samochod">
+        <PropertyRef Name="id_samochod" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="samochod_id_samochod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zamowienie_uzytkownik_FK">
+    <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+    <End Role="zamowienie" Type="Self.zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uzytkownik">
+        <PropertyRef Name="id_uzytkownik" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="uzytkownik_id_uzytkownik" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="zdjecie_samochod_FK">
+    <End Role="samochod" Type="Self.samochod" Multiplicity="1" />
+    <End Role="zdjecie" Type="Self.zdjecie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="samochod">
+        <PropertyRef Name="id_samochod" />
+      </Principal>
+      <Dependent Role="zdjecie">
+        <PropertyRef Name="samochod_id_samochod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CarLeasingModelStoreContainer">
+    <EntitySet Name="dystans" EntityType="Self.dystans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="firma" EntityType="Self.firma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kolor" EntityType="Self.kolor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="marka" EntityType="Self.marka" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="model" EntityType="Self.model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nadwozie" EntityType="Self.nadwozie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="okres" EntityType="Self.okres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="opona" EntityType="Self.opona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paliwo" EntityType="Self.paliwo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="parametr" EntityType="Self.parametr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="platnosc" EntityType="Self.platnosc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rola" EntityType="Self.rola" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="samochod" EntityType="Self.samochod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sezon" EntityType="Self.sezon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="siedzenie" EntityType="Self.siedzenie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="silnik" EntityType="Self.silnik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="skrzynia" EntityType="Self.skrzynia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uzytkownik" EntityType="Self.uzytkownik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="zamowienie" EntityType="Self.zamowienie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="zdjecie" EntityType="Self.zdjecie" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="model_marka_FK" Association="Self.model_marka_FK">
+      <End Role="marka" EntitySet="marka" />
+      <End Role="model" EntitySet="model" />
+    </AssociationSet>
+    <AssociationSet Name="model_silnik_FK" Association="Self.model_silnik_FK">
+      <End Role="silnik" EntitySet="silnik" />
+      <End Role="model" EntitySet="model" />
+    </AssociationSet>
+    <AssociationSet Name="opona_firma_FK" Association="Self.opona_firma_FK">
+      <End Role="firma" EntitySet="firma" />
+      <End Role="opona" EntitySet="opona" />
+    </AssociationSet>
+    <AssociationSet Name="opona_sezon_FK" Association="Self.opona_sezon_FK">
+      <End Role="sezon" EntitySet="sezon" />
+      <End Role="opona" EntitySet="opona" />
+    </AssociationSet>
+    <AssociationSet Name="parametr_model_FK" Association="Self.parametr_model_FK">
+      <End Role="model" EntitySet="model" />
+      <End Role="parametr" EntitySet="parametr" />
+    </AssociationSet>
+    <AssociationSet Name="parametr_nadwozie_FK" Association="Self.parametr_nadwozie_FK">
+      <End Role="nadwozie" EntitySet="nadwozie" />
+      <End Role="parametr" EntitySet="parametr" />
+    </AssociationSet>
+    <AssociationSet Name="parametr_opona_FK" Association="Self.parametr_opona_FK">
+      <End Role="opona" EntitySet="opona" />
+      <End Role="parametr" EntitySet="parametr" />
+    </AssociationSet>
+    <AssociationSet Name="parametr_siedzenie_FK" Association="Self.parametr_siedzenie_FK">
+      <End Role="siedzenie" EntitySet="siedzenie" />
+      <End Role="parametr" EntitySet="parametr" />
+    </AssociationSet>
+    <AssociationSet Name="parametr_skrzynia_FK" Association="Self.parametr_skrzynia_FK">
+      <End Role="skrzynia" EntitySet="skrzynia" />
+      <End Role="parametr" EntitySet="parametr" />
+    </AssociationSet>
+    <AssociationSet Name="samochod_kolor_FK" Association="Self.samochod_kolor_FK">
+      <End Role="kolor" EntitySet="kolor" />
+      <End Role="samochod" EntitySet="samochod" />
+    </AssociationSet>
+    <AssociationSet Name="samochod_parametr_FK" Association="Self.samochod_parametr_FK">
+      <End Role="parametr" EntitySet="parametr" />
+      <End Role="samochod" EntitySet="samochod" />
+    </AssociationSet>
+    <AssociationSet Name="silnik_paliwo_FK" Association="Self.silnik_paliwo_FK">
+      <End Role="paliwo" EntitySet="paliwo" />
+      <End Role="silnik" EntitySet="silnik" />
+    </AssociationSet>
+    <AssociationSet Name="uzytkownik_rola_FK" Association="Self.uzytkownik_rola_FK">
+      <End Role="rola" EntitySet="rola" />
+      <End Role="uzytkownik" EntitySet="uzytkownik" />
+    </AssociationSet>
+    <AssociationSet Name="zamowienie_dystans_FK" Association="Self.zamowienie_dystans_FK">
+      <End Role="dystans" EntitySet="dystans" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="zamowienie_okres_FK" Association="Self.zamowienie_okres_FK">
+      <End Role="okres" EntitySet="okres" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="zamowienie_platnosc_FK" Association="Self.zamowienie_platnosc_FK">
+      <End Role="platnosc" EntitySet="platnosc" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="zamowienie_samochod_FK" Association="Self.zamowienie_samochod_FK">
+      <End Role="samochod" EntitySet="samochod" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="zamowienie_uzytkownik_FK" Association="Self.zamowienie_uzytkownik_FK">
+      <End Role="uzytkownik" EntitySet="uzytkownik" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="zdjecie_samochod_FK" Association="Self.zdjecie_samochod_FK">
+      <End Role="samochod" EntitySet="samochod" />
+      <End Role="zdjecie" EntitySet="zdjecie" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

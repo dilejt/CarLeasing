@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarLeasingModelStoreContainer" CdmEntityContainer="CarLeasingEntities">
+    <EntitySetMapping Name="dystans">
+      <EntityTypeMapping TypeName="CarLeasingModel.dystans">
+        <MappingFragment StoreEntitySet="dystans">
+          <ScalarProperty Name="id_dystans" ColumnName="id_dystans" />
+          <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="firma">
+      <EntityTypeMapping TypeName="CarLeasingModel.firma">
+        <MappingFragment StoreEntitySet="firma">
+          <ScalarProperty Name="id_firma" ColumnName="id_firma" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kolor">
+      <EntityTypeMapping TypeName="CarLeasingModel.kolor">
+        <MappingFragment StoreEntitySet="kolor">
+          <ScalarProperty Name="id_kolor" ColumnName="id_kolor" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marka">
+      <EntityTypeMapping TypeName="CarLeasingModel.marka">
+        <MappingFragment StoreEntitySet="marka">
+          <ScalarProperty Name="id_marka" ColumnName="id_marka" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="model">
+      <EntityTypeMapping TypeName="CarLeasingModel.model">
+        <MappingFragment StoreEntitySet="model">
+          <ScalarProperty Name="id_model" ColumnName="id_model" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="marka_id_marka" ColumnName="marka_id_marka" />
+          <ScalarProperty Name="silnik_id_silnik" ColumnName="silnik_id_silnik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nadwozie">
+      <EntityTypeMapping TypeName="CarLeasingModel.nadwozie">
+        <MappingFragment StoreEntitySet="nadwozie">
+          <ScalarProperty Name="id_nadwozie" ColumnName="id_nadwozie" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="okres">
+      <EntityTypeMapping TypeName="CarLeasingModel.okres">
+        <MappingFragment StoreEntitySet="okres">
+          <ScalarProperty Name="id_okres" ColumnName="id_okres" />
+          <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="opona">
+      <EntityTypeMapping TypeName="CarLeasingModel.opona">
+        <MappingFragment StoreEntitySet="opona">
+          <ScalarProperty Name="id_opona" ColumnName="id_opona" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+          <ScalarProperty Name="firma_id_firma" ColumnName="firma_id_firma" />
+          <ScalarProperty Name="sezon_id_sezon" ColumnName="sezon_id_sezon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paliwo">
+      <EntityTypeMapping TypeName="CarLeasingModel.paliwo">
+        <MappingFragment StoreEntitySet="paliwo">
+          <ScalarProperty Name="id_paliwo" ColumnName="id_paliwo" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametr">
+      <EntityTypeMapping TypeName="CarLeasingModel.parametr">
+        <MappingFragment StoreEntitySet="parametr">
+          <ScalarProperty Name="id_parametr" ColumnName="id_parametr" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="rok_produkcji" ColumnName="rok_produkcji" />
+          <ScalarProperty Name="przebieg" ColumnName="przebieg" />
+          <ScalarProperty Name="pojemnosc_bagaznika" ColumnName="pojemnosc_bagaznika" />
+          <ScalarProperty Name="siedzenie_id_siedzenie" ColumnName="siedzenie_id_siedzenie" />
+          <ScalarProperty Name="opona_id_opona" ColumnName="opona_id_opona" />
+          <ScalarProperty Name="skrzynia_id_skrzynia" ColumnName="skrzynia_id_skrzynia" />
+          <ScalarProperty Name="nadwozie_id_nadwozie" ColumnName="nadwozie_id_nadwozie" />
+          <ScalarProperty Name="model_id_model" ColumnName="model_id_model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="platnosc">
+      <EntityTypeMapping TypeName="CarLeasingModel.platnosc">
+        <MappingFragment StoreEntitySet="platnosc">
+          <ScalarProperty Name="id_platnosc" ColumnName="id_platnosc" />
+          <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rola">
+      <EntityTypeMapping TypeName="CarLeasingModel.rola">
+        <MappingFragment StoreEntitySet="rola">
+          <ScalarProperty Name="id_rola" ColumnName="id_rola" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="samochod">
+      <EntityTypeMapping TypeName="CarLeasingModel.samochod">
+        <MappingFragment StoreEntitySet="samochod">
+          <ScalarProperty Name="id_samochod" ColumnName="id_samochod" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+          <ScalarProperty Name="kolor_id_kolor" ColumnName="kolor_id_kolor" />
+          <ScalarProperty Name="parametr_id_parametr" ColumnName="parametr_id_parametr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sezon">
+      <EntityTypeMapping TypeName="CarLeasingModel.sezon">
+        <MappingFragment StoreEntitySet="sezon">
+          <ScalarProperty Name="id_sezon" ColumnName="id_sezon" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="siedzenie">
+      <EntityTypeMapping TypeName="CarLeasingModel.siedzenie">
+        <MappingFragment StoreEntitySet="siedzenie">
+          <ScalarProperty Name="id_siedzenie" ColumnName="id_siedzenie" />
+          <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="silnik">
+      <EntityTypeMapping TypeName="CarLeasingModel.silnik">
+        <MappingFragment StoreEntitySet="silnik">
+          <ScalarProperty Name="id_silnik" ColumnName="id_silnik" />
+          <ScalarProperty Name="moc" ColumnName="moc" />
+          <ScalarProperty Name="spalanie" ColumnName="spalanie" />
+          <ScalarProperty Name="pojemnosc" ColumnName="pojemnosc" />
+          <ScalarProperty Name="emisja" ColumnName="emisja" />
+          <ScalarProperty Name="przyspieszenie" ColumnName="przyspieszenie" />
+          <ScalarProperty Name="paliwo_id_paliwo" ColumnName="paliwo_id_paliwo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="skrzynia">
+      <EntityTypeMapping TypeName="CarLeasingModel.skrzynia">
+        <MappingFragment StoreEntitySet="skrzynia">
+          <ScalarProperty Name="id_skrzynia" ColumnName="id_skrzynia" />
+          <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uzytkownik">
+      <EntityTypeMapping TypeName="CarLeasingModel.uzytkownik">
+        <MappingFragment StoreEntitySet="uzytkownik">
+          <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="haslo" ColumnName="haslo" />
+          <ScalarProperty Name="rola_id_rola" ColumnName="rola_id_rola" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zamowienie">
+      <EntityTypeMapping TypeName="CarLeasingModel.zamowienie">
+        <MappingFragment StoreEntitySet="zamowienie">
+          <ScalarProperty Name="id_zamowienie" ColumnName="id_zamowienie" />
+          <ScalarProperty Name="koszt" ColumnName="koszt" />
+          <ScalarProperty Name="okres_id_okres" ColumnName="okres_id_okres" />
+          <ScalarProperty Name="platnosc_id_platnosc" ColumnName="platnosc_id_platnosc" />
+          <ScalarProperty Name="dystans_id_dystans" ColumnName="dystans_id_dystans" />
+          <ScalarProperty Name="samochod_id_samochod" ColumnName="samochod_id_samochod" />
+          <ScalarProperty Name="data_zlozenia" ColumnName="data_zlozenia" />
+          <ScalarProperty Name="uzytkownik_id_uzytkownik" ColumnName="uzytkownik_id_uzytkownik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zdjecie">
+      <EntityTypeMapping TypeName="CarLeasingModel.zdjecie">
+        <MappingFragment StoreEntitySet="zdjecie">
+          <ScalarProperty Name="id_zdjecie" ColumnName="id_zdjecie" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="samochod_id_samochod" ColumnName="samochod_id_samochod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

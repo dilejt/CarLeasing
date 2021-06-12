@@ -4,32 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b354ea04e79549b9820d3b4f58def6b4" Name="Diagram1">
-        <EntityTypeShape EntityType="CarLeasingModel.dystans" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.firma" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.kolor" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.marka" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.model" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.nadwozie" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.okres" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.opona" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.paliwo" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.parametr" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.platnosc" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.rola" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.samochod" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.sezon" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.siedzenie" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.silnik" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.skrzynia" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.uzytkownik" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.zamowienie" Width="1.5" PointX="9.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarLeasingModel.zdjecie" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
+      <Diagram DiagramId="db27f3fefcf94cfaa7b3706a00dc336a" Name="Diagram1">
+        <EntityTypeShape EntityType="CarLeasingModel.dystans" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.firma" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.kolor" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.marka" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.model" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.nadwozie" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.okres" Width="1.5" PointX="9.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.opona" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.paliwo" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.parametr" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.platnosc" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.rola" Width="1.5" PointX="7.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.samochod" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.sezon" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.siedzenie" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.silnik" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.skrzynia" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.uzytkownik" Width="1.5" PointX="9.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.zamowienie" Width="1.5" PointX="12" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarLeasingModel.zdjecie" Width="1.5" PointX="12" PointY="9.125" IsExpanded="true" />
         <AssociationConnector Association="CarLeasingModel.zamowienie_dystans_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.opona_firma_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.samochod_kolor_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.model_marka_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="CarLeasingModel.parametr_marka_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.model_silnik_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.parametr_model_FK" ManuallyRouted="false" />
         <AssociationConnector Association="CarLeasingModel.parametr_nadwozie_FK" ManuallyRouted="false" />

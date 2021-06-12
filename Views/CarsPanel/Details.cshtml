@@ -1,0 +1,144 @@
+﻿@model CarLeasing.Models.samochod
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/CarsPanelDetails.css" rel="stylesheet" />
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Szczegóły</li>
+    </ol>
+</div>
+<img src=@Model.parametr.model.marka.logo class="img-fluid">
+<span class="pl-3 carName">@Html.DisplayFor(model => model.parametr.model.marka.nazwa) @Html.DisplayFor(model => model.parametr.model.nazwa)  -@Html.ActionLink("Edytuj", "Edit", new { id = Model.id_samochod })-</span>
+<div class="row no-gutters galleryContainer">
+    <div class="gallery w-100">
+        @foreach (var item in Model.zdjecie)
+        {
+            <div class="px-0 col-12 col-sm-6 col-md-4 col-lg-3">
+                <img src=@item.url class="card-img-top" onclick="showModal(this);">
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Ogólne informacje</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Cena</td>
+                            <td>@Html.DisplayFor(model => model.cena) zł</td>
+                        </tr>
+                        <tr>
+                            <td>Rok produkcji</td>
+                            <td>@Html.DisplayFor(model => model.parametr.rok_produkcji)r.</td>
+                        </tr>
+                        <tr>
+                            <td>Kolor</td>
+                            <td>@Html.DisplayFor(model => model.kolor.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Przebieg</td>
+                            <td>@Html.DisplayFor(model => model.parametr.przebieg) km</td>
+                        </tr>
+                        <tr>
+                            <td>Opis</td>
+                            <td>@Html.DisplayFor(model => model.parametr.opis)</td>
+                        </tr>
+                        <tr>
+                            <td>Minimalna pojemność bagażnika</td>
+                            <td>@Html.DisplayFor(model => model.parametr.pojemnosc_bagaznika) l</td>
+                        </tr>
+                        <tr>
+                            <td>Liczba miejsc</td>
+                            <td>@Html.DisplayFor(model => model.parametr.siedzenie.ilosc)</td>
+                        </tr>
+                        <tr>
+                            <td>Typ nadwozia</td>
+                            <td>@Html.DisplayFor(model => model.parametr.nadwozie.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj skrzyni</td>
+                            <td>@Html.DisplayFor(model => model.parametr.skrzynia.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły opon</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Firma opon</td>
+                            <td>@Html.DisplayFor(model => model.parametr.opona.firma.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Model opon</td>
+                            <td>@Html.DisplayFor(model => model.parametr.opona.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj opon</td>
+                            <td>@Html.DisplayFor(model => model.parametr.opona.sezon.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tableContent mt-4 p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły silnika</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Spalanie</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.spalanie) l/100km</td>
+                        </tr>
+                        <tr>
+                            <td>Moc</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.moc) KM</td>
+                        </tr>
+                        <tr>
+                            <td>Pojemność</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.pojemnosc) cm³</td>
+                        </tr>
+                        <tr>
+                            <td>Emisja CO₂</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.emisja) g/km</td>
+                        </tr>
+                        <tr>
+                            <td>Przyspieszenie (od 0 do 100km/h)</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.przyspieszenie) s</td>
+                        </tr>
+                        <tr>
+                            <td>Typ silnika</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.paliwo.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal" onclick="closeModal()" class="modal">
+    <img class="modal-content" id="imgModal">
+</div>
+<script>
+    let modal = document.getElementById("modal");
+    let modalImg = document.getElementById("imgModal");
+    function showModal(imgs) {
+        modal.style.display = "block";
+        modalImg.src = imgs.src;
+    }
+    function closeModal() {
+        modal.style.display = "none";
+    }
+</script>

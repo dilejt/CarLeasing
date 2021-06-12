@@ -1,0 +1,23 @@
+﻿@model CarLeasing.Models.uzytkownik
+
+@{
+    ViewBag.Title = "Delete";
+}
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Usuń</li>
+    </ol>
+</div>
+<h3>Czy na pewno chcesz usunąć użytkownika @Html.DisplayFor(model => model.imie) @Html.DisplayNameFor(model => model.nazwisko) i powiązane z nimi dane?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+    </div>
+}
+

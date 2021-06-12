@@ -22,7 +22,7 @@ namespace CarLeasing.Models
     
         public int id_silnik { get; set; }
         public double moc { get; set; }
-        public Nullable<double> spalanie { get; set; }
+        public double spalanie { get; set; }
         public double pojemnosc { get; set; }
         public double emisja { get; set; }
         public double przyspieszenie { get; set; }

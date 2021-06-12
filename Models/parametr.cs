@@ -27,12 +27,10 @@ namespace CarLeasing.Models
         public int pojemnosc_bagaznika { get; set; }
         public int siedzenie_id_siedzenie { get; set; }
         public int opona_id_opona { get; set; }
-        public int model_id_model { get; set; }
-        public int marka_id_marka { get; set; }
         public int skrzynia_id_skrzynia { get; set; }
         public int nadwozie_id_nadwozie { get; set; }
+        public int model_id_model { get; set; }
     
-        public virtual marka marka { get; set; }
         public virtual model model { get; set; }
         public virtual nadwozie nadwozie { get; set; }
         public virtual opona opona { get; set; }
