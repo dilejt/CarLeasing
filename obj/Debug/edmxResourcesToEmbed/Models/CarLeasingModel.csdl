@@ -201,6 +201,8 @@
     <NavigationProperty Name="platnosc" Relationship="Self.zamowienie_platnosc_FK" FromRole="zamowienie" ToRole="platnosc" />
     <NavigationProperty Name="samochod" Relationship="Self.zamowienie_samochod_FK" FromRole="zamowienie" ToRole="samochod" />
     <NavigationProperty Name="uzytkownik" Relationship="Self.zamowienie_uzytkownik_FK" FromRole="zamowienie" ToRole="uzytkownik" />
+    <Property Name="status_id_status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="status" Relationship="CarLeasingModel.zamowienie_status_FK" FromRole="zamowienie" ToRole="status" />
   </EntityType>
   <EntityType Name="zdjecie">
     <Key>
@@ -536,5 +538,30 @@
       <End Role="uzytkownik" EntitySet="uzytkownik" />
       <End Role="zamowienie" EntitySet="zamowienie" />
     </AssociationSet>
+    <EntitySet Name="status" EntityType="CarLeasingModel.status" />
+    <AssociationSet Name="zamowienie_status_FK" Association="CarLeasingModel.zamowienie_status_FK">
+      <End Role="status" EntitySet="status" />
+      <End Role="zamowienie" EntitySet="zamowienie" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="id_status" />
+    </Key>
+    <Property Name="id_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nazwa" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="zamowienie" Relationship="CarLeasingModel.zamowienie_status_FK" FromRole="status" ToRole="zamowienie" />
+  </EntityType>
+  <Association Name="zamowienie_status_FK">
+    <End Type="CarLeasingModel.status" Role="status" Multiplicity="1" />
+    <End Type="CarLeasingModel.zamowienie" Role="zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="id_status" />
+      </Principal>
+      <Dependent Role="zamowienie">
+        <PropertyRef Name="status_id_status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
