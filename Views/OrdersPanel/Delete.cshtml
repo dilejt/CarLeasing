@@ -3,86 +3,20 @@
 @{
     ViewBag.Title = "Delete";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>zamowienie</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.koszt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.koszt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.data_zlozenia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.data_zlozenia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dystans.id_dystans)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dystans.id_dystans)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.okres.id_okres)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.okres.id_okres)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.platnosc.id_platnosc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.platnosc.id_platnosc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.samochod.id_samochod)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.samochod.id_samochod)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.uzytkownik.imie)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.uzytkownik.imie)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status.nazwa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status.nazwa)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Usuń</li>
+    </ol>
 </div>
+<h3>Czy na pewno chcesz usunąć wybrane zamówienie?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default btn-danger" />
+    </div>
+}

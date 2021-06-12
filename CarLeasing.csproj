@@ -497,7 +497,6 @@
     <Content Include="Views\UsersPanel\Delete.cshtml" />
     <Content Include="Views\UsersPanel\Edit.cshtml" />
     <Content Include="Views\UsersPanel\Index.cshtml" />
-    <Content Include="Views\OrdersPanel\Create.cshtml" />
     <Content Include="Views\OrdersPanel\Delete.cshtml" />
     <Content Include="Views\OrdersPanel\Details.cshtml" />
     <Content Include="Views\OrdersPanel\Edit.cshtml" />

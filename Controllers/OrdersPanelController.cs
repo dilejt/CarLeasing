@@ -10,6 +10,7 @@ using CarLeasing.Models;
 
 namespace CarLeasing.Controllers
 {
+    [AdminAuthentication]
     public class OrdersPanelController : Controller
     {
         private CarLeasingEntities db = new CarLeasingEntities();
@@ -36,41 +37,6 @@ namespace CarLeasing.Controllers
             return View(zamowienie);
         }
 
-        // GET: OrdersPanel/Create
-        public ActionResult Create()
-        {
-            ViewBag.dystans_id_dystans = new SelectList(db.dystans, "id_dystans", "id_dystans");
-            ViewBag.okres_id_okres = new SelectList(db.okres, "id_okres", "id_okres");
-            ViewBag.platnosc_id_platnosc = new SelectList(db.platnosc, "id_platnosc", "id_platnosc");
-            ViewBag.samochod_id_samochod = new SelectList(db.samochod, "id_samochod", "id_samochod");
-            ViewBag.uzytkownik_id_uzytkownik = new SelectList(db.uzytkownik, "id_uzytkownik", "imie");
-            ViewBag.status_id_status = new SelectList(db.status, "id_status", "nazwa");
-            return View();
-        }
-
-        // POST: OrdersPanel/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_zamowienie,koszt,okres_id_okres,platnosc_id_platnosc,dystans_id_dystans,samochod_id_samochod,data_zlozenia,uzytkownik_id_uzytkownik,status_id_status")] zamowienie zamowienie)
-        {
-            if (ModelState.IsValid)
-            {
-                db.zamowienie.Add(zamowienie);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.dystans_id_dystans = new SelectList(db.dystans, "id_dystans", "id_dystans", zamowienie.dystans_id_dystans);
-            ViewBag.okres_id_okres = new SelectList(db.okres, "id_okres", "id_okres", zamowienie.okres_id_okres);
-            ViewBag.platnosc_id_platnosc = new SelectList(db.platnosc, "id_platnosc", "id_platnosc", zamowienie.platnosc_id_platnosc);
-            ViewBag.samochod_id_samochod = new SelectList(db.samochod, "id_samochod", "id_samochod", zamowienie.samochod_id_samochod);
-            ViewBag.uzytkownik_id_uzytkownik = new SelectList(db.uzytkownik, "id_uzytkownik", "imie", zamowienie.uzytkownik_id_uzytkownik);
-            ViewBag.status_id_status = new SelectList(db.status, "id_status", "nazwa", zamowienie.status_id_status);
-            return View(zamowienie);
-        }
-
         // GET: OrdersPanel/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -83,10 +49,6 @@ namespace CarLeasing.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.dystans_id_dystans = new SelectList(db.dystans, "id_dystans", "id_dystans", zamowienie.dystans_id_dystans);
-            ViewBag.okres_id_okres = new SelectList(db.okres, "id_okres", "id_okres", zamowienie.okres_id_okres);
-            ViewBag.platnosc_id_platnosc = new SelectList(db.platnosc, "id_platnosc", "id_platnosc", zamowienie.platnosc_id_platnosc);
-            ViewBag.samochod_id_samochod = new SelectList(db.samochod, "id_samochod", "id_samochod", zamowienie.samochod_id_samochod);
             ViewBag.uzytkownik_id_uzytkownik = new SelectList(db.uzytkownik, "id_uzytkownik", "imie", zamowienie.uzytkownik_id_uzytkownik);
             ViewBag.status_id_status = new SelectList(db.status, "id_status", "nazwa", zamowienie.status_id_status);
             return View(zamowienie);
@@ -97,18 +59,15 @@ namespace CarLeasing.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_zamowienie,koszt,okres_id_okres,platnosc_id_platnosc,dystans_id_dystans,samochod_id_samochod,data_zlozenia,uzytkownik_id_uzytkownik,status_id_status")] zamowienie zamowienie)
+        public ActionResult Edit(zamowienie zamowienie)
         {
+            zamowienie oldOrder = db.zamowienie.Find(zamowienie.id_zamowienie);
+            oldOrder.status_id_status = zamowienie.status_id_status;
             if (ModelState.IsValid)
             {
-                db.Entry(zamowienie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.dystans_id_dystans = new SelectList(db.dystans, "id_dystans", "id_dystans", zamowienie.dystans_id_dystans);
-            ViewBag.okres_id_okres = new SelectList(db.okres, "id_okres", "id_okres", zamowienie.okres_id_okres);
-            ViewBag.platnosc_id_platnosc = new SelectList(db.platnosc, "id_platnosc", "id_platnosc", zamowienie.platnosc_id_platnosc);
-            ViewBag.samochod_id_samochod = new SelectList(db.samochod, "id_samochod", "id_samochod", zamowienie.samochod_id_samochod);
             ViewBag.uzytkownik_id_uzytkownik = new SelectList(db.uzytkownik, "id_uzytkownik", "imie", zamowienie.uzytkownik_id_uzytkownik);
             ViewBag.status_id_status = new SelectList(db.status, "id_status", "nazwa", zamowienie.status_id_status);
             return View(zamowienie);
