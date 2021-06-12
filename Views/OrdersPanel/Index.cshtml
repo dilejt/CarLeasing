@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CarLeasing.Models.zamowienie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.koszt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_zlozenia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dystans.id_dystans)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.okres.id_okres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.platnosc.id_platnosc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.samochod.id_samochod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uzytkownik.imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status.nazwa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.koszt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_zlozenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dystans.id_dystans)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.okres.id_okres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.platnosc.id_platnosc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.samochod.id_samochod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uzytkownik.imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status.nazwa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_zamowienie }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_zamowienie }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_zamowienie })
+        </td>
+    </tr>
+}
+
+</table>
