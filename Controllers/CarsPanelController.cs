@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -193,6 +194,35 @@ namespace CarLeasing.Controllers
             oldSamochod.parametr.model.silnik.paliwo_id_paliwo = data.id_paliwo;
             if (ModelState.IsValid)
             {
+                foreach (HttpPostedFileBase file in data.files)
+                {
+                    if (file != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                        string extensionName = Path.GetExtension(file.FileName);
+                        fileName = fileName + extensionName;
+                        fileName = String.Concat(fileName.Where(c => !Char.IsWhiteSpace(c)));
+                        string directoryPath = "/Content/Images/Model/" + oldSamochod.parametr.model.nazwa;
+                        if (!Directory.Exists(Server.MapPath(directoryPath)))
+                        {
+                            Directory.CreateDirectory(Server.MapPath(directoryPath));
+                        }
+                        else
+                        {
+                            if(System.IO.File.Exists(Server.MapPath(directoryPath + "/") + fileName))
+                            {
+                                continue;
+                            }
+                        }
+                        string destinationPath = Path.Combine(Server.MapPath(directoryPath + "/")  + fileName);
+                        file.SaveAs(destinationPath);
+                        zdjecie zdjecie = new zdjecie();
+                        zdjecie.samochod_id_samochod = oldSamochod.id_samochod;
+                        zdjecie.url = directoryPath + "/" + fileName;
+                        db.zdjecie.Add(zdjecie);
+                    }
+
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

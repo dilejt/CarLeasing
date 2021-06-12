@@ -17,9 +17,9 @@
                 <h6>@Html.DisplayFor(modelItem => item.kolor.nazwa)</h6>
                 <div class="card-text">Cena: @Html.DisplayFor(modelItem => item.cena) zł</div>
                 <p>Przebieg: @Html.DisplayFor(modelItem => item.parametr.przebieg) km</p>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id_samochod }, new { @class = "btn btn-success" })
-                @Html.ActionLink("Details", "Details", new { id = item.id_samochod }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Delete", "Delete", new { id = item.id_samochod }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.id_samochod }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.id_samochod }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Usuń", "Delete", new { id = item.id_samochod }, new { @class = "btn btn-danger" })
             </div>
         </div>
     }

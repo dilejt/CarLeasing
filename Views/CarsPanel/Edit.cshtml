@@ -174,6 +174,11 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 p-3">
+            <h2 class="font-weight-bold pb-2">Zdjęcia</h2>
+            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple" })
+            @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
+        </div>
         <div class="col-12 text-right pr-5">
             <input type="submit" value="Zapisz" class="btn btn-default btnOrange ml-x" />
         </div>

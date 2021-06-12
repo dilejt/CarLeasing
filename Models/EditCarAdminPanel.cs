@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -26,5 +27,8 @@ namespace CarLeasing.Models
         public double emisja { get; set; }
         public double przyspieszenie { get; set; }
         public int id_paliwo { get; set; }
+
+        [Display(Name = "Wybierz zdjęcia")]
+        public HttpPostedFileBase[] files { get; set; }
     }
 }
