@@ -8,25 +8,34 @@
         <div class="headerText"><span class="headerWord">Wielkie </span>kroki wymagają <span class="headerWord">odważnych</span> decyzji</div>
     </div>
 </header>
-<section class="row px-5 py-5">
+<section class="row px-5 catalog">
     <div class="form-horizontal">
         <div class="form-group">
+            @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-12 mb-3">Bogaty katalog w jednym miejscu!</div>
-                    <div class="col-4">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
-                    <div class="col-4">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
+                <div class="row text-left text-lg-center justify-content-center">
+                    <div class="col-12 mb-3 font-weight-bold">Bogaty katalog w jednym miejscu!</div>
+                    <div class="col-12 col-lg-6 d-flex justify-content-lg-end">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
+                    <div class="col-12 col-lg-6 d-flex justify-content-start">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
+                    <div class="col-md-12">
+                        <input type="submit" value="Wyszukaj" class="btn btn-default btnOrange mt-3" />
+                    </div>
                 </div>
+                <img class="d-none d-sm-block position-relative img-fluid cars" src="~/Content/Images/Index/cars.png" />
             </div>
+            }
         </div>
     </div>
+    <img class="d-none d-md-block position-absolute paint img-fluid" src="~/Content/Images/Index/paint.png" />
 </section>
 <section class="row px-5 py-5 testItOut">
     <div class="col-lg-10 col-12 mx-auto">
         <div class="row rounded race ml-0">
-            <div class="col-6 position-relative rounded">Poskrom jedną z maszyn i udaj się na jazdę testową już dziś!</div>
-            <div class="col-6 position-relative px-0">
-                <img class="img-fluid rounded py-5" src="~/Content/Images/Index/drive.jpg" />
+            <div class="col-6 position-relative rounded p-5">Poskrom jedną z maszyn i udaj się na jazdę testową już dziś!</div>
+            <div class="col-6 positsamochodsion-relative px-0">
+                <img class="img-fluid rounded py-5" src="~/Content/Images/Index/testdrive.jpg" />
             </div>
         </div>
     </div>
@@ -41,9 +50,23 @@
         </div>
     </div>
 </section>
-<section class="row px-5 py-5 text-light">
-    <div class="col-12">
-        Samochody
+<section class="row px-5 py-5 text-dark carShow">
+    <div class="w-100">
+        @foreach (var item in Model.Take(3))
+        {
+            <div class="col-xl-4 col-lg-6 col-12">
+                <div class="card">
+                    <h5 class="card-title text-center py-3">@item.parametr.model.marka.nazwa @item.parametr.model.nazwa</h5>
+                    @foreach (var value in item.zdjecie.Take(1))
+                    {
+                        <img src=@value.url class="cardImg rounded-0 card-img-top border-secondary">
+                    }
+                    <div class="card-body text-center">
+                        Cena od: @item.cena zł
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </section>
 <section class="row px-5 carCategories py-5">

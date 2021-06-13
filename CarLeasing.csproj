@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\CarsPanelController.cs" />
     <Compile Include="Controllers\ClientPanelController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
@@ -255,10 +256,13 @@
     <Content Include="Content\Images\AdminPanel\make.jpg" />
     <Content Include="Content\Images\AdminPanel\order.jpg" />
     <Content Include="Content\Images\AdminPanel\tire.jpg" />
+    <Content Include="Content\Images\Index\cars.png" />
     <Content Include="Content\Images\Index\cons.jpg" />
     <Content Include="Content\Images\Index\drive.jpg" />
     <Content Include="Content\Images\Index\header.jpg" />
     <Content Include="Content\Images\Index\offer.jpg" />
+    <Content Include="Content\Images\Index\paint.png" />
+    <Content Include="Content\Images\Index\testdrive.jpg" />
     <Content Include="Content\Images\Login\slide1.jpg" />
     <Content Include="Content\Images\Login\slide2.jpg" />
     <Content Include="Content\Images\Marka\AlfaRomeo.png" />
@@ -506,6 +510,11 @@
     <Content Include="Views\ClientPanel\Details.cshtml" />
     <Content Include="Views\ClientPanel\Edit.cshtml" />
     <Content Include="Views\ClientPanel\Index.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
