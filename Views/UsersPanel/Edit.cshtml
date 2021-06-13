@@ -20,7 +20,7 @@
         @Html.HiddenFor(model => model.id_uzytkownik)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.imie, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.imie, "Imie", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.imie, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.imie, "", new { @class = "text-danger" })
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nazwisko, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nazwisko, "Nazwisko", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nazwisko, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nazwisko, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
@@ -44,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.telefon, "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.telefon, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.telefon, "", new { @class = "text-danger" })
@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.haslo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.haslo, "Hasło", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.haslo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.haslo, "", new { @class = "text-danger" })
@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.rola_id_rola, "rola_id_rola", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.rola_id_rola, "Rola", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("rola_id_rola", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.rola_id_rola, "", new { @class = "text-danger" })
@@ -74,10 +74,6 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<CarLeasing.Models.zamowienie>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h3>Aktywne</h3>
+<table class="table">
+    <tr>
+        <th>
+            Koszt
+        </th>
+        <th>
+            Data złożenia
+        </th>
+        <th>
+            Dystans
+        </th>
+        <th>
+            Długość wypożyczenia
+        </th>
+        <th>
+            Płatność okresowa
+        </th>
+        <th>
+            Samochód
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.status.nazwa.Equals("aktywne"))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.koszt) zł
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_zlozenia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dystans.ilosc) km
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.okres.ilosc) mies.
+                </td>
+                <td>
+                    co @Html.DisplayFor(modelItem => item.platnosc.ilosc) mies.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.samochod.kolor.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.id_zamowienie }) |
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.id_zamowienie }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.id_zamowienie })
+                </td>
+            </tr>
+        }
+    }
+</table>
+<h3>Zakończone</h3>
+<table class="table">
+    <tr>
+        <th>
+            Koszt
+        </th>
+        <th>
+            Data złożenia
+        </th>
+        <th>
+            Dystans
+        </th>
+        <th>
+            Długość wypożyczenia
+        </th>
+        <th>
+            Płatność okresowa
+        </th>
+        <th>
+            Samochód
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.status.nazwa.Equals("zakonczone"))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.koszt) zł
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_zlozenia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dystans.ilosc) km
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.okres.ilosc) mies.
+                </td>
+                <td>
+                    co @Html.DisplayFor(modelItem => item.platnosc.ilosc) mies.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.samochod.kolor.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.samochod.parametr.model.nazwa)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.id_zamowienie }) |
+                    @Html.ActionLink("Szczegóły", "Details", new { id = item.id_zamowienie }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.id_zamowienie })
+                </td>
+            </tr>
+        }
+    }
+</table>

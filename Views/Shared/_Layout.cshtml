@@ -40,7 +40,7 @@
                                     }
                                     else if (Session["Role"].ToString() == "klient")
                                     {
-                                        @Html.ActionLink("Zamówienia", "Index", "UserPanel", new { area = "" }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Zamówienia", "Index", "ClientPanel", new { area = "" }, new { @class = "dropdown-item" })
                                     }
                                     <div class="dropdown-divider"></div>
                                     @Html.ActionLink(" Wyloguj", "Logout", "Login", new { area = "" }, new { @class = "dropdown-item" })
