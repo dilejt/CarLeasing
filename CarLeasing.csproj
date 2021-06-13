@@ -244,6 +244,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Breadcrumb.css" />
     <Content Include="Content\CarsPanelDetails.css" />
+    <Content Include="Content\CarsPanelEdit.css" />
     <Content Include="Content\CarsPanelIndex.css" />
     <Content Include="Content\Images\AdminPanel\cars.jpg" />
     <Content Include="Content\Images\AdminPanel\client.jpg" />
