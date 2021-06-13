@@ -4,21 +4,16 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edycja profilu</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>uzytkownik</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id_uzytkownik)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.imie, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.imie, "Imie", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.imie, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.imie, "", new { @class = "text-danger" })
@@ -26,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nazwisko, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nazwisko, "Nazwisko", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nazwisko, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nazwisko, "", new { @class = "text-danger" })
@@ -34,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
@@ -42,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.telefon, "Telefon", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.telefon, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.telefon, "", new { @class = "text-danger" })
@@ -50,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.haslo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.haslo, "Hasło", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.PasswordFor(model => model.haslo, new { @class = "form-control", @placeholder = "Hasło" })
                 @Html.ValidationMessageFor(model => model.haslo, "", new { @class = "text-danger" })
@@ -59,19 +54,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz" class="btn btn-default btn-secondary" />
+                <input type="submit" value="Zapisz" class="btn btn-default btnOrange" />
             </div>
         </div>
     </div>
 }
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-}
-<div>
-    @Html.ActionLink("Wróc", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

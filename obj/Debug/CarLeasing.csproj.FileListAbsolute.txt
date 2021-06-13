@@ -76,8 +76,8 @@ F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProje
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\bin\Newtonsoft.Json.xml
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\bin\Antlr3.Runtime.pdb
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.csprojAssemblyReference.cache
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.csproj.CoreCompileInputs.cache
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.csproj.CopyComplete
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.dll
 F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.pdb
+F:\pen\PWSZ\VI_semestr\Aplikacje_internetowe_II(.NET)\CarLeasing\CarLeasingProject\CarLeasing\obj\Debug\CarLeasing.csprojAssemblyReference.cache

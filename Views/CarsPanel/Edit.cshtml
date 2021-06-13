@@ -114,9 +114,7 @@
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.id_sezon, "Rodzaj opon", htmlAttributes: new { @class = "control-label" })</td>
-                                <td>
-                                    @Html.DropDownList("id_sezon", null, htmlAttributes: new { id = "sezon", @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.id_sezon, "", new { @class = "text-danger" })
+                                <td id="sezon">
                                 </td>
                             </tr>
                         </tbody>
@@ -279,7 +277,7 @@
                         data: { id: $("#model").val() },
                         success: function (m) {
                             $.each(m, function (i, item) {
-                                $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                                $("#sezon").append('<div>' + item.Text + '</div>');
                             });
                         },
                         error: function (ex) {

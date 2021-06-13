@@ -1,0 +1,46 @@
+﻿.bgHeader {
+    background-image: url('Images/Account/userBg.jpg');
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: right;
+    color: white;
+    font-size: 40px;
+}
+.profile {
+    background-color: #f56f46;
+    height: 300px;
+    color: #111;
+    margin-top: -100px;
+    font-weight: 600;
+}
+.userImg{
+    margin-top: -77px;
+    width: 150px;
+}
+.userImgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile a{
+    color: inherit;
+}
+.profile ul {
+    list-style: none;
+    padding: 0;
+}
+.profile li {
+    padding-left: 1.3em;
+}
+.profile li:before {
+    display: inline-block;
+    margin-left: -1.3em;
+    width: 1.3em;
+}
+.profile li:nth-child(1):before {
+    content: "📭";
+}
+.profile li:nth-child(2):before {
+    content: "📞";
+}

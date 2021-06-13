@@ -1,0 +1,143 @@
+﻿@model CarLeasing.Models.zamowienie
+
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Panel", "Index", "AdminPanel")</li>
+        <li class="breadcrumb-item">@Html.ActionLink("Lista", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Szczegóły</li>
+    </ol>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły zamówienia</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Koszt</td>
+                            <td>@Html.DisplayFor(model => model.koszt) zł</td>
+                        </tr>
+                        <tr>
+                            <td>Data złożenia</td>
+                            <td>@Html.DisplayFor(model => model.data_zlozenia)</td>
+                        </tr>
+                        <tr>
+                            <td>Dystans</td>
+                            <td>@Html.DisplayFor(model => model.dystans.ilosc) km</td>
+                        </tr>
+                        <tr>
+                            <td>Długość wypożyczenia</td>
+                            <td>@Html.DisplayFor(model => model.okres.ilosc) mies.</td>
+                        </tr>
+                        <tr>
+                            <td>Płatność okresowa</td>
+                            <td>co @Html.DisplayFor(model => model.platnosc.ilosc) mies.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły samochodu</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Rok produkcji</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.rok_produkcji)r.</td>
+                        </tr>
+                        <tr>
+                            <td>Kolor</td>
+                            <td>@Html.DisplayFor(model => model.samochod.kolor.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Przebieg</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.przebieg) km</td>
+                        </tr>
+                        <tr>
+                            <td>Opis</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.opis)</td>
+                        </tr>
+                        <tr>
+                            <td>Minimalna pojemność bagażnika</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.pojemnosc_bagaznika) l</td>
+                        </tr>
+                        <tr>
+                            <td>Liczba miejsc</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.siedzenie.ilosc)</td>
+                        </tr>
+                        <tr>
+                            <td>Typ nadwozia</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.nadwozie.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj skrzyni</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.skrzynia.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły opon</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Firma opon</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.opona.firma.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Model opon</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.opona.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj opon</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.opona.sezon.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tableContent mt-4 p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły silnika</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Spalanie</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.spalanie) l/100km</td>
+                        </tr>
+                        <tr>
+                            <td>Moc</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.moc) KM</td>
+                        </tr>
+                        <tr>
+                            <td>Pojemność</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.pojemnosc) cm³</td>
+                        </tr>
+                        <tr>
+                            <td>Emisja CO₂</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.emisja) g/km</td>
+                        </tr>
+                        <tr>
+                            <td>Przyspieszenie (od 0 do 100km/h)</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.przyspieszenie) s</td>
+                        </tr>
+                        <tr>
+                            <td>Typ silnika</td>
+                            <td>@Html.DisplayFor(model => model.samochod.parametr.model.silnik.paliwo.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

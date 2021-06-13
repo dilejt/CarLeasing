@@ -34,24 +34,25 @@ namespace CarLeasing.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa", uzytkownik.rola_id_rola);
             return View(uzytkownik);
         }
 
         // POST: Account/Edit
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_uzytkownik,imie,nazwisko,email,telefon,haslo,rola_id_rola")] uzytkownik uzytkownik)
+        public ActionResult Edit(uzytkownik uzytkownik)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(uzytkownik).State = EntityState.Modified;
+                uzytkownik user = db.uzytkownik.Find(Session["UserId"]);
+                user.email = uzytkownik.email;
+                user.imie = uzytkownik.imie;
+                user.nazwisko = uzytkownik.nazwisko;
+                user.telefon = uzytkownik.telefon;
+                user.haslo = uzytkownik.haslo;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.rola_id_rola = new SelectList(db.rola, "id_rola", "nazwa", uzytkownik.rola_id_rola);
             return View(uzytkownik);
         }
 
