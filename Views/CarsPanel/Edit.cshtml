@@ -181,9 +181,11 @@
             <h2 class="font-weight-bold pb-2">Zdjęcia</h2>
         </div>
         <div class="gallery w-100">
-            <label for="files" class="addPicture p-0 m-0 col-12 col-md-6 col-lg-4">
+            <label for="files" class="p-0 m-0 col-12 col-md-6 col-lg-4">
+                <i id="removeButton" class="close">x</i>
+                <span class="fileName px-5" id="attachedFiles">+</span>
             </label>
-            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class = "d-none" })
+            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class="d-none" })
             @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
             @if (Model.zdjecie != null)
             {
@@ -203,78 +205,98 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript">
-        $.validator.methods.range = function (value, element, param) {
-            let globalizedValue = value.replace(",", ".");
-            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
-        }
+    <script type="text/javascript">
+            $.validator.methods.range = function (value, element, param) {
+                let globalizedValue = value.replace(",", ".");
+                return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+            }
 
-        $.validator.methods.number = function (value, element) {
-            return this.optional(element) || /-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
-        }
+            $.validator.methods.number = function (value, element) {
+                return this.optional(element) || /-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+            }
 
-        function deletePhoto(img) {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("DeleteImage")',
-                dataType: 'json',
-                data: { url: $(img).children()[0].src, id: $(img).children()[0].id },
-                success: function () {
-                    location.reload();
-                },
-                error: function (ex) {
+            $('#removeButton').hide();
+            $('#files').on('change', function () {
+                let val = $(this).val();
+                if (val !== '') {
+                    $("#attachedFiles").css("fontSize", "20px");
+                    $('#attachedFiles').hide().text("Dodano " + $('#files')[0].files.length + " plik/i/ów").fadeIn();
+                    $('#removeButton').fadeIn();
+                } else {
+                    $("#attachedFiles").css("fontSize", "40px");
+                    $('#attachedFiles').hide().text('+').fadeIn();
+                    $('#removeButton').fadeOut();
                 }
             });
-        }
-
-        function manufacturerList() {
-            $("#model").empty();
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetModelList")',
-                dataType: 'json',
-                data: { id: $("#firma").val() },
-                success: function (m) {
-                    $.each(m.Result, function (i, item) {
-                        if (m.ID == item.Value)
-                            $("#model").append('<option selected="selected" value="' + item.Value + '">' + item.Text + '</option>');
-                        else
-                            $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
-                    });
-                    sezonList();
-                },
-                error: function (ex) {
-                }
+            $('#removeButton').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $('#files').val('').change();
             });
-        }
-        function sezonList() {
-            $("#sezon").empty();
-            if ($("#model").val()) {
+
+
+            function deletePhoto(img) {
                 $.ajax({
                     type: 'POST',
-                    url: '@Url.Action("GetSezonList")',
+                    url: '@Url.Action("DeleteImage")',
                     dataType: 'json',
-                    data: { id: $("#model").val() },
-                    success: function (m) {
-                        $.each(m, function (i, item) {
-                            $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
-                        });
+                    data: { url: $(img).children()[0].src, id: $(img).children()[0].id },
+                    success: function () {
+                        location.reload();
                     },
                     error: function (ex) {
                     }
                 });
             }
-        }
 
-        $(document).ready(function () {
-            manufacturerList();
-            $("#firma").change(function () {
+            function manufacturerList() {
+                $("#model").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetModelList")',
+                    dataType: 'json',
+                    data: { id: $("#firma").val() },
+                    success: function (m) {
+                        $.each(m.Result, function (i, item) {
+                            if (m.ID == item.Value)
+                                $("#model").append('<option selected="selected" value="' + item.Value + '">' + item.Text + '</option>');
+                            else
+                                $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                        });
+                        sezonList();
+                    },
+                    error: function (ex) {
+                    }
+                });
+            }
+            function sezonList() {
+                $("#sezon").empty();
+                if ($("#model").val()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetSezonList")',
+                        dataType: 'json',
+                        data: { id: $("#model").val() },
+                        success: function (m) {
+                            $.each(m, function (i, item) {
+                                $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                            });
+                        },
+                        error: function (ex) {
+                        }
+                    });
+                }
+            }
+
+            $(document).ready(function () {
                 manufacturerList();
+                $("#firma").change(function () {
+                    manufacturerList();
+                });
+                $("#model").change(function () {
+                    sezonList();
+                });
             });
-            $("#model").change(function () {
-                sezonList();
-            });
-        });
 
-</script>
+    </script>
 }
