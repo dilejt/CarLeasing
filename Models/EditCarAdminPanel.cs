@@ -30,5 +30,6 @@ namespace CarLeasing.Models
 
         [Display(Name = "Wybierz zdjęcia")]
         public HttpPostedFileBase[] files { get; set; }
+        public Dictionary<int,string> zdjecie { get; set; }
     }
 }

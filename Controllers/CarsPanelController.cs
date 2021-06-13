@@ -144,6 +144,11 @@ namespace CarLeasing.Controllers
             car.przyspieszenie = samochod.parametr.model.silnik.przyspieszenie;
             car.id_paliwo = samochod.parametr.model.silnik.paliwo_id_paliwo;
             tireId = samochod.parametr.opona_id_opona;
+            car.zdjecie = new Dictionary<int, string>();
+            foreach (var item in db.zdjecie.Where(z => z.samochod_id_samochod == samochod.id_samochod))
+            {
+                car.zdjecie.Add(item.id_zdjecie,item.url);
+            }
             ViewBag.id_kolor = new SelectList(db.kolor, "id_kolor", "nazwa", samochod.kolor_id_kolor);
             ViewBag.id_parametr = new SelectList(db.parametr, "id_parametr", "opis", samochod.parametr_id_parametr);
             ViewBag.id_siedzenie = new SelectList(db.siedzenie, "id_siedzenie", "ilosc", samochod.parametr.siedzenie_id_siedzenie);
@@ -156,6 +161,22 @@ namespace CarLeasing.Controllers
             return View(car);
         }
 
+        public JsonResult DeleteImage(string url, int id)
+        {
+            //protection against id change
+            if (db.zdjecie.Where(z => url.Contains(z.url)).Any() && db.zdjecie.Where(z => z.id_zdjecie.Equals(id)).Any())
+            {
+                zdjecie zdjecie = db.zdjecie.Find(id);
+                string fullPath = Request.MapPath(zdjecie.url);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+                db.zdjecie.Remove(zdjecie);
+                db.SaveChanges();
+            }
+            return Json("");
+        }
         public JsonResult GetModelList(int id)
         {
             var result = new { Result = new SelectList(db.opona.Where(item => (item.firma_id_firma == id)), "id_opona", "nazwa"), ID = tireId };
@@ -221,10 +242,10 @@ namespace CarLeasing.Controllers
                         zdjecie.url = directoryPath + "/" + fileName;
                         db.zdjecie.Add(zdjecie);
                     }
-
                 }
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.UploadStatus = "Przesłano " + data.files.Count().ToString() + " plik/i/ów.";
+                return RedirectToAction("Edit");
             }
             ViewBag.id_kolor = new SelectList(db.kolor, "id_kolor", "nazwa", data.id_kolor);
             ViewBag.id_parametr = new SelectList(db.parametr, "id_parametr", "opis");
