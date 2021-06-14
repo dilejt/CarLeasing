@@ -11,6 +11,7 @@ namespace CarLeasing.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Web;
 
     public partial class marka
@@ -22,9 +23,12 @@ namespace CarLeasing.Models
         }
     
         public int id_marka { get; set; }
+        [Required(ErrorMessage = "Podaj nazwê")]
         public string nazwa { get; set; }
+        [Required(ErrorMessage = "Podaj opis")]
         public string opis { get; set; }
         public string logo { get; set; }
+        [Required(ErrorMessage = "Za³¹cz plik")]
         public HttpPostedFileBase MarkaFile { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

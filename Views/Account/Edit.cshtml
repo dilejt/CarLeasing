@@ -3,7 +3,13 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<link href="~/Content/Breadcrumb.css" rel="stylesheet" />
+<div aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("Konto", "Index")</li>
+        <li class="breadcrumb-item active" aria-current="page">Edytuj</li>
+    </ol>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

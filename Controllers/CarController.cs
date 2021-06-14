@@ -45,8 +45,6 @@ namespace CarLeasing.Controllers
         }
 
         // POST: Car/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id_samochod,cena,kolor_id_kolor,parametr_id_parametr")] samochod samochod)

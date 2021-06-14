@@ -20,7 +20,7 @@
                     <div class="col-12 col-lg-6 d-flex justify-content-lg-end">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
                     <div class="col-12 col-lg-6 d-flex justify-content-start">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
                     <div class="col-md-12">
-                        <input type="submit" value="Wyszukaj" class="btn btn-default btnOrange mt-3" />
+                        @Html.ActionLink("Wyszukaj", "Index", "Car", htmlAttributes: new { id = "model", @class = "btn btn-default btnOrange mt-3" })
                     </div>
                 </div>
                 <img class="d-none d-sm-block position-relative img-fluid cars" src="~/Content/Images/Index/cars.png" />

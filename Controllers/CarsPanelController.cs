@@ -72,7 +72,6 @@ namespace CarLeasing.Controllers
                 samochod.parametr_id_parametr = parametr.id_parametr;
                 samochod.cena = data.cena;
                 zdjecie.samochod_id_samochod = samochod.id_samochod;
-                zdjecie.url = data.url;
                 parametr.opis = data.opis;
                 parametr.rok_produkcji = data.rok_produkcji;
                 parametr.przebieg = data.przebieg;

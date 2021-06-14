@@ -73,6 +73,11 @@ namespace CarLeasing.Controllers
         public ActionResult DeleteConfirmed()
         {
             uzytkownik uzytkownik = db.uzytkownik.Find(Session["UserId"]);
+            int userId = uzytkownik.id_uzytkownik;
+            foreach (zamowienie zamowienie in db.zamowienie.Where(z => z.uzytkownik_id_uzytkownik == userId))
+            {
+                db.zamowienie.Remove(zamowienie);
+            }
             db.uzytkownik.Remove(uzytkownik);
             db.SaveChanges();
             Session.Clear();

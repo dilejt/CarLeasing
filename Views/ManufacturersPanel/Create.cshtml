@@ -11,8 +11,6 @@
         <li class="breadcrumb-item active" aria-current="page">Dodaj</li>
     </ol>
 </div>
-<h2>Dodaj markę</h2>
-
 @using (Html.BeginForm("Create", "ManufacturersPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
