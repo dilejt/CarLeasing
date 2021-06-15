@@ -258,6 +258,8 @@
     <Content Include="Content\Images\AdminPanel\order.jpg" />
     <Content Include="Content\Images\AdminPanel\tire.jpg" />
     <Content Include="Content\Images\Car\unknown.png" />
+    <Content Include="Content\Images\footer.png" />
+    <Content Include="Content\Images\Index\car.png" />
     <Content Include="Content\Images\Index\cars.png" />
     <Content Include="Content\Images\Index\cons.jpg" />
     <Content Include="Content\Images\Index\drive.jpg" />

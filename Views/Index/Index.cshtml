@@ -30,12 +30,17 @@
     </div>
     <img class="d-none d-md-block position-absolute paint img-fluid" src="~/Content/Images/Index/paint.png" />
 </section>
-<section class="row px-5 py-5 testItOut">
+<section class="row px-5 py-5 testDrive">
     <div class="col-lg-10 col-12 mx-auto">
         <div class="row rounded race ml-0">
-            <div class="col-6 position-relative rounded p-5">Poskrom jedną z maszyn i udaj się na jazdę testową już dziś!</div>
-            <div class="col-6 positsamochodsion-relative px-0">
-                <img class="img-fluid rounded py-5" src="~/Content/Images/Index/testdrive.jpg" />
+            <div class="col-lg-6 position-relative rounded p-5">
+                <div class="textTestDrive mt-lg-5">
+                    Poskrom jedną z maszyn i udaj się na jazdę testową już dziś!
+                </div>
+                <img src="~/Content/Images/Index/car.png" class="img-fluid mt-5"/>
+            </div>
+            <div class="col-lg-6 positsamochodsion-relative px-0">
+                <img class="img-fluid rounded mx-auto mx-lg-0 d-flex d-lg-inline-flex py-lg-5" src="~/Content/Images/Index/testdrive.jpg" />
             </div>
         </div>
     </div>
@@ -43,10 +48,10 @@
 <section class="row px-5 py-5 cons text-light">
     <div class="col-12">
         <div class="row rounded">
-            <div class="col-6">
+            <div class="col-md-6">
                 <img class="img-fluid" src="~/Content/Images/Index/cons.jpg" />
             </div>
-            <div class="col-6">Pokaż sie z klasą</div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center textShowClass">Pokaż sie z klasą</div>
         </div>
     </div>
 </section>
@@ -56,14 +61,15 @@
         {
             <div class="col-xl-4 col-lg-6 col-12">
                 <div class="card">
-                    <h5 class="card-title text-center py-3">@item.parametr.model.marka.nazwa @item.parametr.model.nazwa</h5>
+                    <h5 class="card-title text-center py-3 font-italic">@item.parametr.model.marka.nazwa @item.parametr.model.nazwa</h5>
                     @foreach (var value in item.zdjecie.Take(1))
                     {
-                        <img src=@value.url class="cardImg rounded-0 card-img-top border-secondary">
+                        <img src='@value.url' class="cardImg rounded-0 card-img-top border-secondary">
                     }
-                    <div class="card-body text-center">
-                        Cena od: @item.cena zł
-                    </div>
+                <div class="card-body text-center font-weight-bold">
+                    @{ var price = Math.Round(item.cena, 2); }
+                    Cena od: @price zł
+                </div>
                 </div>
             </div>
         }
@@ -71,7 +77,7 @@
 </section>
 <section class="row px-5 carCategories py-5">
     <div class="col-12 text-center">
-        Sprawdź
+        <button class="glow-on-hover" type="button">Sprawdź</button>
     </div>
 </section>
 @section scripts{

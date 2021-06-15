@@ -9,7 +9,7 @@
         <div class="card mt-3 mx-3" style="width: 18rem;">
             @foreach (var value in item.zdjecie.Take(1))
             {
-                <img src=@value.url class="card-img-top" alt="">
+                <img src='@value.url' class="card-img-top" alt="">
             }
             <div class="card-body">
                 <div class="card-title"><h5>@Html.DisplayFor(modelItem => item.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.parametr.model.nazwa)<small> @Html.DisplayFor(modelItem => item.parametr.rok_produkcji)r.</small></h5></div>

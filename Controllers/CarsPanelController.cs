@@ -163,8 +163,9 @@ namespace CarLeasing.Controllers
         public JsonResult DeleteImage(string url, int id)
         {
             //protection against id change
-            if (db.zdjecie.Where(z => url.Contains(z.url)).Any() && db.zdjecie.Where(z => z.id_zdjecie.Equals(id)).Any())
+            if (db.zdjecie.Where(z => z.id_zdjecie.Equals(id)).Any())
             {
+
                 zdjecie zdjecie = db.zdjecie.Find(id);
                 string fullPath = Request.MapPath(zdjecie.url);
                 if (System.IO.File.Exists(fullPath))

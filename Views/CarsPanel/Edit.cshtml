@@ -191,7 +191,7 @@
                 foreach (var item in Model.zdjecie)
                 {
                     <div class="photo px-0 col-12 col-md-6 col-lg-4" onclick="deletePhoto(this);">
-                        <img id=@item.Key src=@item.Value class="card-img-top">
+                        <img id=@item.Key src='@item.Value' class="card-img-top">
                     </div>
                 }
             }
