@@ -20,7 +20,9 @@ namespace CarLeasing.Controllers
         {
             var samochod = db.samochod.Include(s => s.kolor)
                 .Include(s => s.parametr)
-                .Where(s => s.parametr.model_id_model == id);
+                .Where(s => s.parametr.model_id_model == id)
+                .Where(s => db.zamowienie.Where(z => z.status_id_status == 2).Select(z => z.samochod_id_samochod).Contains(s.id_samochod) || !db.zamowienie.Select(z => z.samochod_id_samochod).Contains(s.id_samochod));
+
             return View(samochod.ToList());
         }
 
