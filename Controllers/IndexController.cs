@@ -18,7 +18,7 @@ namespace CarLeasing.Controllers
         public ActionResult Index()
         {
             ViewBag.model = new SelectList(db.model, "id_model", "nazwa");
-            ViewBag.marka = new SelectList(db.marka, "id_marka", "nazwa");
+            ViewBag.marka = new SelectList(db.marka.Where(m => db.samochod.Select(s => s.parametr.model.marka_id_marka).Contains(m.id_marka)), "id_marka", "nazwa");
             var samochod = db.samochod.Include(s => s.kolor)
                 .Include(s => s.parametr)
                 .Include(s => s.parametr.opona)
@@ -34,31 +34,16 @@ namespace CarLeasing.Controllers
 
         public JsonResult GetModelList(int id)
         {
-            return Json(new SelectList(db.model.Where(empt => (empt.marka_id_marka == id)), "id_model", "nazwa"));
+            return Json(new SelectList(db.model.Where(m => (m.marka_id_marka == id)), "id_model", "nazwa"));
         }
 
-        // GET: Index/Details/5
-        public ActionResult Details(int? id)
+        [HttpPost]
+        public RedirectToRouteResult GetCarsByModel()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            samochod samochod = db.samochod.Find(id);
-            if (samochod == null)
-            {
-                return HttpNotFound();
-            }
-            return View(samochod);
+            int id = Convert.ToInt32(Request.Form["model"]);
+            return RedirectToAction("Index", "Car", new { id = id });
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      
     }
 }

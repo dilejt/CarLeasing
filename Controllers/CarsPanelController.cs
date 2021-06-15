@@ -72,7 +72,6 @@ namespace CarLeasing.Controllers
                 samochod.parametr_id_parametr = parametr.id_parametr;
                 samochod.cena = data.cena;
                 zdjecie.samochod_id_samochod = samochod.id_samochod;
-                zdjecie.url = data.url;
                 parametr.opis = data.opis;
                 parametr.rok_produkcji = data.rok_produkcji;
                 parametr.przebieg = data.przebieg;
@@ -164,8 +163,9 @@ namespace CarLeasing.Controllers
         public JsonResult DeleteImage(string url, int id)
         {
             //protection against id change
-            if (db.zdjecie.Where(z => url.Contains(z.url)).Any() && db.zdjecie.Where(z => z.id_zdjecie.Equals(id)).Any())
+            if (db.zdjecie.Where(z => z.id_zdjecie.Equals(id)).Any())
             {
+
                 zdjecie zdjecie = db.zdjecie.Find(id);
                 string fullPath = Request.MapPath(zdjecie.url);
                 if (System.IO.File.Exists(fullPath))

@@ -13,11 +13,11 @@
 </div>
 <img src=@Model.parametr.model.marka.logo class="img-fluid">
 <span class="pl-3 carName">@Html.DisplayFor(model => model.parametr.model.marka.nazwa) @Html.DisplayFor(model => model.parametr.model.nazwa)  -@Html.ActionLink("Edytuj", "Edit", new { id = Model.id_samochod })-</span>
-<div class="row no-gutters galleryContainer">
+<div class="row no-gutters mt-3 galleryContainer">
     <div class="gallery w-100">
         @foreach (var item in Model.zdjecie)
         {
-            <div class="px-0 col-12 col-md-6 col-lg-4">
+            <div class="px-0 col-12 col-md-6 col-xl-4">
                 <img src=@item.url class="card-img-top" onclick="showModal(this);">
             </div>
         }

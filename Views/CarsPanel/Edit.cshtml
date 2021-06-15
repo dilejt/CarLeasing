@@ -16,7 +16,6 @@
 {
     @Html.AntiForgeryToken()
     <div class="row">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id_samochod)
         <div class="col-lg-6 col-12 p-3">
             <div class="p-4 rounded">
@@ -114,7 +113,9 @@
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(model => model.id_sezon, "Rodzaj opon", htmlAttributes: new { @class = "control-label" })</td>
-                                <td id="sezon">
+                                <td>
+                                    @Html.DropDownList("id_sezon", null, htmlAttributes: new { id = "sezon", @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.id_sezon, "", new { @class = "text-danger" })
                                 </td>
                             </tr>
                         </tbody>
@@ -183,18 +184,19 @@
                 <i id="removeButton" class="close">x</i>
                 <span class="fileName px-5" id="attachedFiles">+</span>
             </label>
-            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class="d-none" })
+            @Html.TextBoxFor(model => model.files, "", new { @type = "file", @multiple = "multiple", @class = "d-none" })
             @Html.ValidationMessageFor(model => model.files, "", new { @class = "text-danger" })
             @if (Model.zdjecie != null)
             {
                 foreach (var item in Model.zdjecie)
                 {
                     <div class="photo px-0 col-12 col-md-6 col-lg-4" onclick="deletePhoto(this);">
-                        <img id=@item.Key src=@item.Value class="card-img-top">
+                        <img id=@item.Key src='@item.Value' class="card-img-top">
                     </div>
                 }
             }
         </div>
+        @Html.ValidationSummary(true, "Złe dane", new { @class = "col-12 text-right mt-4 pr-5 text-danger" })
         <div class="col-12 text-right mt-4 pr-5">
             <input type="submit" value="Zapisz" class="btn btn-default btnOrange ml-x" />
         </div>
@@ -277,7 +279,7 @@
                         data: { id: $("#model").val() },
                         success: function (m) {
                             $.each(m, function (i, item) {
-                                $("#sezon").append('<div>' + item.Text + '</div>');
+                                $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
                             });
                         },
                         error: function (ex) {

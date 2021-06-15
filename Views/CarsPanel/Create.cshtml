@@ -15,7 +15,6 @@
 {
     @Html.AntiForgeryToken()
     <div class="row">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="col-lg-6 col-12 p-3">
             <div class="p-4 rounded">
                 <h2 class="font-weight-bold pb-2">Samochód</h2>
@@ -34,13 +33,6 @@
                                 <td>
                                     @Html.EditorFor(model => model.model, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.model, "", new { @class = "text-danger" })
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>@Html.LabelFor(model => model.url, "Zdjęcie", htmlAttributes: new { @class = "control-label" })</td>
-                                <td>
-                                    @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
                                 </td>
                             </tr>
                         </tbody>
@@ -189,6 +181,7 @@
                 </div>
             </div>
         </div>
+        @Html.ValidationSummary(true, "Złe dane", new { @class = "col-12 text-right mt-4 pr-5 text-danger" })
         <div class="col-12 text-right pr-5">
             <input type="submit" value="Zapisz" class="btn btn-default btnOrange" />
         </div>

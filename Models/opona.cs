@@ -11,7 +11,8 @@ namespace CarLeasing.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class opona
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace CarLeasing.Models
         }
     
         public int id_opona { get; set; }
+        [Required(ErrorMessage = "Podaj nazwê")]
         public string nazwa { get; set; }
         public int firma_id_firma { get; set; }
         public int sezon_id_sezon { get; set; }

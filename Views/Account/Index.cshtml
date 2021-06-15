@@ -22,6 +22,9 @@
                 <li> @Html.DisplayFor(model => model.telefon)</li>
             </ul>
         </div>
+        <div class="text-right">
+            @Html.ActionLink("Usuń", "Delete", new { id = Model.id_uzytkownik }, htmlAttributes: new { @class = "btn btn-danger mt-4" })
+        </div>
     </div>
 </div>
 

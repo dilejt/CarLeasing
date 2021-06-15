@@ -1,0 +1,238 @@
+﻿@model CarLeasing.Models.samochod
+<link href="~/Content/CarsPanelDetails.css" rel="stylesheet" />
+<img src=@Model.parametr.model.marka.logo class="img-fluid">
+<span class="pl-3 carName">@Html.DisplayFor(model => model.parametr.model.marka.nazwa) @Html.DisplayFor(model => model.parametr.model.nazwa)</span>
+<div class="row no-gutters mt-3 galleryContainer">
+    <div class="gallery w-100">
+        @foreach (var item in Model.zdjecie)
+        {
+            <div class="px-0 col-12 col-md-6 col-xl-4">
+                <img src='@item.url' class="card-img-top" onclick="showModal(this);">
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Ogólne informacje</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Cena</td>
+                            <td>@Html.DisplayFor(model => model.cena) zł</td>
+                        </tr>
+                        <tr>
+                            <td>Rok produkcji</td>
+                            <td>@Html.DisplayFor(model => model.parametr.rok_produkcji)r.</td>
+                        </tr>
+                        <tr>
+                            <td>Kolor</td>
+                            <td>@Html.DisplayFor(model => model.kolor.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Przebieg</td>
+                            <td>@Html.DisplayFor(model => model.parametr.przebieg) km</td>
+                        </tr>
+                        <tr>
+                            <td>Opis</td>
+                            <td>@Html.DisplayFor(model => model.parametr.opis)</td>
+                        </tr>
+                        <tr>
+                            <td>Minimalna pojemność bagażnika</td>
+                            <td>@Html.DisplayFor(model => model.parametr.pojemnosc_bagaznika) l</td>
+                        </tr>
+                        <tr>
+                            <td>Liczba miejsc</td>
+                            <td>@Html.DisplayFor(model => model.parametr.siedzenie.ilosc)</td>
+                        </tr>
+                        <tr>
+                            <td>Typ nadwozia</td>
+                            <td>@Html.DisplayFor(model => model.parametr.nadwozie.nazwa)</td>
+                        </tr>
+                        <tr>
+                            <td>Rodzaj skrzyni</td>
+                            <td>@Html.DisplayFor(model => model.parametr.skrzynia.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-12 p-3">
+        <div class="tableContent p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Zamówienie</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        @using (Html.BeginForm("Order", "Car", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.id_samochod)
+                            <tr>
+                                @{ var makeOrder = new CarLeasing.Models.MakeOrder(); }
+                                <td>@Html.LabelFor(model => makeOrder.id_dystans, "Dystans", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        @Html.DropDownList("id_dystans", null, htmlAttributes: new { @class = "form-control" })<span class="pl-3"> km</span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => makeOrder.id_dystans, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => makeOrder.id_platnosc, "Płatność okresowa", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        <span class="pr-3">co </span>@Html.DropDownList("id_platnosc", null, htmlAttributes: new { @class = "form-control" })<span class="pl-3"> mies.</span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => makeOrder.id_platnosc, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => makeOrder.id_okres, "Długość wypożyczenia", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        @Html.DropDownList("id_okres", null, htmlAttributes: new { @class = "form-control" })<span class="pl-3"> mies.</span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => makeOrder.id_okres, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.parametr.opona.firma_id_firma, "Firma opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        @Html.DropDownList("id_firma", null, htmlAttributes: new { id = "firma", @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.parametr.opona.firma_id_firma, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.parametr.opona.id_opona, "Model opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        @Html.DropDownList("id_opona", null, htmlAttributes: new { id = "model", @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.parametr.opona.id_opona, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(model => model.parametr.opona.sezon_id_sezon, "Rodzaj opon", htmlAttributes: new { @class = "control-label" })</td>
+                                <td>
+                                    <div class="d-inline-flex align-items-center">
+                                        @Html.DropDownList("id_sezon", null, htmlAttributes: new { id = "sezon", @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.parametr.opona.sezon_id_sezon, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Zamów" class="btn btn-default btnOrange mt-3" /></td>
+                                <td></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tableContent mt-4 p-4 rounded">
+            <h2 class="font-weight-bold pb-2">Szczegóły silnika</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Spalanie</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.spalanie) l/100km</td>
+                        </tr>
+                        <tr>
+                            <td>Moc</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.moc) KM</td>
+                        </tr>
+                        <tr>
+                            <td>Pojemność</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.pojemnosc) cm³</td>
+                        </tr>
+                        <tr>
+                            <td>Emisja CO₂</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.emisja) g/km</td>
+                        </tr>
+                        <tr>
+                            <td>Przyspieszenie (od 0 do 100km/h)</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.przyspieszenie) s</td>
+                        </tr>
+                        <tr>
+                            <td>Typ silnika</td>
+                            <td>@Html.DisplayFor(model => model.parametr.model.silnik.paliwo.nazwa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal" onclick="closeModal()" class="modal">
+    <img class="modal-content" id="imgModal">
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        let modal = document.getElementById("modal");
+        let modalImg = document.getElementById("imgModal");
+        function showModal(imgs) {
+            modal.style.display = "block";
+            modalImg.src = imgs.src;
+        }
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function manufacturerList() {
+            $("#model").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetModelList")',
+                dataType: 'json',
+                data: { id: $("#firma").val() },
+                success: function (m) {
+                    $.each(m.Result, function (i, item) {
+                        if (m.ID == item.Value)
+                            $("#model").append('<option selected="selected" value="' + item.Value + '">' + item.Text + '</option>');
+                        else
+                            $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                    });
+                    sezonList();
+                },
+                error: function (ex) {
+                }
+            });
+        }
+        function sezonList() {
+            $("#sezon").empty();
+            if ($("#model").val()) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetSezonList")',
+                    dataType: 'json',
+                    data: { id: $("#model").val() },
+                    success: function (m) {
+                        $.each(m, function (i, item) {
+                            $("#sezon").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                    }
+                });
+            }
+        }
+
+        $(document).ready(function () {
+            manufacturerList();
+            $("#firma").change(function () {
+                manufacturerList();
+            });
+            $("#model").change(function () {
+                sezonList();
+            });
+        });
+
+    </script>
+}

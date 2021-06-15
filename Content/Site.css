@@ -46,4 +46,17 @@ nav a {
     color: #fff;
     font-weight: 600;
 }
+.footerImg {
+    right: 0;
+}
+@media (min-width: 576px) {
+    .footerImg {
+        max-width: 70vw;
+    }
+}
+@media (min-width: 1200px) {
+    .footerImg {
+        max-width: 40vw;
+    }
+}
 

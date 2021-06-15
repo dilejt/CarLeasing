@@ -11,7 +11,8 @@ namespace CarLeasing.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class uzytkownik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,15 @@ namespace CarLeasing.Models
         }
     
         public int id_uzytkownik { get; set; }
+        [Required(ErrorMessage = "Podaj imiê")]
         public string imie { get; set; }
+        [Required(ErrorMessage = "Podaj nazwisko")]
         public string nazwisko { get; set; }
+        [Required(ErrorMessage = "Podaj email")]
         public string email { get; set; }
+        [Required(ErrorMessage = "Podaj telefon")]
         public string telefon { get; set; }
+        [Required(ErrorMessage = "Podaj has³o")]
         public string haslo { get; set; }
         public int rola_id_rola { get; set; }
     
