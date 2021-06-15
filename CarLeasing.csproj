@@ -175,6 +175,7 @@
     <Compile Include="Models\kolor.cs">
       <DependentUpon>CarLeasingModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MakeOrder.cs" />
     <Compile Include="Models\marka.cs">
       <DependentUpon>CarLeasingModel.tt</DependentUpon>
     </Compile>
@@ -256,6 +257,7 @@
     <Content Include="Content\Images\AdminPanel\make.jpg" />
     <Content Include="Content\Images\AdminPanel\order.jpg" />
     <Content Include="Content\Images\AdminPanel\tire.jpg" />
+    <Content Include="Content\Images\Car\unknown.png" />
     <Content Include="Content\Images\Index\cars.png" />
     <Content Include="Content\Images\Index\cons.jpg" />
     <Content Include="Content\Images\Index\drive.jpg" />

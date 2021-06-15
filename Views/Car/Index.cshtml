@@ -3,43 +3,29 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.cena)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.kolor.nazwa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.parametr.opis)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cena)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.kolor.nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.parametr.opis)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_samochod }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_samochod }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_samochod })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row d-flex justify-content-left mx-auto">
+    @foreach (var item in Model)
+    {
+    <div class="card mt-3 mx-3" style="width: 18rem;">
+        @foreach (var value in item.zdjecie.Take(1))
+        {
+            if (@value.url.Length != 0)
+            {
+                <img src=@value.url class="card-img-top" alt="">
+            }
+            else
+            {
+                <img class="card-img-top" src="~/Content/Images/Car/unknown.png" />
+            }
+        }
+        <div class="card-body">
+            <div class="card-title"><h5>@Html.DisplayFor(modelItem => item.parametr.model.marka.nazwa) @Html.DisplayFor(modelItem => item.parametr.model.nazwa)<small> @Html.DisplayFor(modelItem => item.parametr.rok_produkcji)r.</small></h5></div>
+            <h6>@Html.DisplayFor(modelItem => item.kolor.nazwa)</h6>
+            <h6>Cena: @Html.DisplayFor(modelItem => item.cena) zł</h6>
+            <h6>Przebieg: @Html.DisplayFor(modelItem => item.parametr.przebieg) km</h6>
+            <h6>Opony: @Html.DisplayFor(modelItem => item.parametr.opona.firma.nazwa) @Html.DisplayFor(modelItem => item.parametr.opona.nazwa)</h6>
+            @Html.ActionLink("Szczegóły", "Details", new { id = item.id_samochod }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    }
+</div>

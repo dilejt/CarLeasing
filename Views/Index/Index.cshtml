@@ -11,19 +11,19 @@
 <section class="row px-5 catalog">
     <div class="form-horizontal">
         <div class="form-group">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("GetCarsByModel", "Index", FormMethod.Post))
             {
             @Html.AntiForgeryToken()
             <div class="col-md-12">
-                <div class="row text-left text-lg-center justify-content-center">
+                <div class="row  text-center text-md-left text-lg-center justify-content-center">
                     <div class="col-12 mb-3 font-weight-bold">Bogaty katalog w jednym miejscu!</div>
-                    <div class="col-12 col-lg-6 d-flex justify-content-lg-end">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
-                    <div class="col-12 col-lg-6 d-flex justify-content-start">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
+                    <div class="col-12 col-sm-6 col-md-12 col-lg-6 d-flex justify-content-lg-end">@Html.DropDownList("marka", null, htmlAttributes: new { id = "marka", @class = "form-control" })</div>
+                    <div class="col-12 mt-3 mt-sm-0 mt-md-3 mt-lg-0 col-sm-6 col-md-12 col-lg-6 d-flex justify-content-start">@Html.DropDownList("model", null, htmlAttributes: new { id = "model", @class = "form-control" })</div>
                     <div class="col-md-12">
-                        @Html.ActionLink("Wyszukaj", "Index", "Car", htmlAttributes: new { id = "model", @class = "btn btn-default btnOrange mt-3" })
+                        <input type="submit" value="Wyszukaj" class="btn btn-default btnOrange mt-3"/>
                     </div>
                 </div>
-                <img class="d-none d-sm-block position-relative img-fluid cars" src="~/Content/Images/Index/cars.png" />
+                <img class="d-none d-md-block position-relative img-fluid cars" src="~/Content/Images/Index/cars.png" />
             </div>
             }
         </div>
@@ -77,28 +77,27 @@
 @section scripts{
     <script type="text/javascript">
         function manufacturerList() {
-            $("#model").empty();
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("GetModelList")',
-                    dataType: 'json',
-                    data: { id: $("#marka").val() },
-                    success: function (m) {
-                        $.each(m, function (i, item) {
-                            $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
-                        });
-                    },
-                    error: function (ex) {
-                        alert('Fail.' + ex);
-                    }
-                });
-                //return false;
+        $("#model").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetModelList")',
+                dataType: 'json',
+                data: { id: $("#marka").val() },
+                success: function (m) {
+                    $.each(m, function (i, item) {
+                        $("#model").append('<option value="' + item.Value + '">' + item.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Fail.' + ex);
+                }
+            });
         }
         $(document).ready(function () {
             manufacturerList();
             $("#marka").change(function () {
                 manufacturerList();
-            })
+            });
         });
     </script>
 }

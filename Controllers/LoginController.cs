@@ -26,19 +26,6 @@ namespace CarLeasing.Controllers
             }
         }
 
-        // GET: Paliwo
-        public ActionResult Paliwo()
-        {
-            if (Session["UserId"] != null)
-            {
-                return RedirectToAction("Index", "Index");
-            }
-            else
-            {
-                return View();
-            }
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(string email, string haslo)

@@ -40,6 +40,7 @@ header div {
     padding-top: 100px;
 }
 .catalog .cars{
+    max-width: 40vw;
     right: -49vw;
     top: -60px;
     z-index: 1;
@@ -48,7 +49,7 @@ header div {
     z-index: 2;
     position: relative;
 }
-.catalog a{
+.catalog input {
     z-index: 2;
     position: relative;
 }

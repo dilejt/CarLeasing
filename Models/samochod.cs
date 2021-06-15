@@ -32,5 +32,6 @@ namespace CarLeasing.Models
         public virtual ICollection<zamowienie> zamowienie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<zdjecie> zdjecie { get; set; }
+        public string SelectedModel { get; set; }
     }
 }
