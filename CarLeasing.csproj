@@ -138,7 +138,6 @@
     <Compile Include="Controllers\ClientPanelController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ManufacturersController.cs" />
     <Compile Include="Controllers\ManufacturersPanelController.cs" />
     <Compile Include="Controllers\OrdersPanelController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -257,7 +256,6 @@
     <Content Include="Content\Images\AdminPanel\make.jpg" />
     <Content Include="Content\Images\AdminPanel\order.jpg" />
     <Content Include="Content\Images\AdminPanel\tire.jpg" />
-    <Content Include="Content\Images\Car\unknown.png" />
     <Content Include="Content\Images\footer.png" />
     <Content Include="Content\Images\Index\car.png" />
     <Content Include="Content\Images\Index\cars.png" />
@@ -295,7 +293,6 @@
     <Content Include="Content\Images\Model\BMWX62.jpg" />
     <Content Include="Content\Images\Register\register.jpg" />
     <Content Include="Content\Login.css" />
-    <Content Include="Content\Manufacturers.css" />
     <Content Include="Content\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -468,7 +465,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Index\Details.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
@@ -483,13 +479,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\AdminPanel\Cars.cshtml" />
     <Content Include="Views\AdminPanel\Index.cshtml" />
-    <Content Include="Views\Manufacturers\Create.cshtml" />
-    <Content Include="Views\Manufacturers\Delete.cshtml" />
-    <Content Include="Views\Manufacturers\Details.cshtml" />
-    <Content Include="Views\Manufacturers\Edit.cshtml" />
-    <Content Include="Views\Manufacturers\Index.cshtml" />
     <Content Include="Views\CarsPanel\Create.cshtml" />
     <Content Include="Views\CarsPanel\Delete.cshtml" />
     <Content Include="Views\CarsPanel\Details.cshtml" />
@@ -514,10 +504,7 @@
     <Content Include="Views\ClientPanel\Details.cshtml" />
     <Content Include="Views\ClientPanel\Edit.cshtml" />
     <Content Include="Views\ClientPanel\Index.cshtml" />
-    <Content Include="Views\Car\Create.cshtml" />
-    <Content Include="Views\Car\Delete.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
-    <Content Include="Views\Car\Edit.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />

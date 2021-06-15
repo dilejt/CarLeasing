@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -45,28 +44,6 @@ namespace CarLeasing.Controllers
             return RedirectToAction("Index", "Car", new { id = id });
         }
 
-        // GET: Index/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            samochod samochod = db.samochod.Find(id);
-            if (samochod == null)
-            {
-                return HttpNotFound();
-            }
-            return View(samochod);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+      
     }
 }
