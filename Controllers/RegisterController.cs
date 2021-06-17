@@ -32,23 +32,40 @@ namespace CarLeasing.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(uzytkownik uzytkownik)
         {
-            var check = db.uzytkownik.FirstOrDefault(s => s.email == uzytkownik.email);
-            if (check == null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    uzytkownik.rola_id_rola = 1;
-                    db.uzytkownik.Add(uzytkownik);
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "Index");
-                }
-            }
-            else
-            {
-                ViewBag.errorEmail = "Podany email jest zajęty!";
+                uzytkownik.rola_id_rola = 1;
+                db.uzytkownik.Add(uzytkownik);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Index");
             }
             ModelState.Clear();
             return View(uzytkownik);
+        }
+        public ActionResult CheckTelExist(string telefon)
+        {
+            bool UserExist = db.uzytkownik.Where(u => u.telefon.Equals(telefon)).Any();
+            if (UserExist == true)
+            {
+                return Content("false");
+            }
+            else
+            {
+                return Content("true");
+            }
+        }
+
+        public ActionResult CheckEmailExist(string email)
+        {
+            bool UserExist = db.uzytkownik.Where(u => u.email.Equals(email)).Any();
+            if (UserExist == true)
+            {
+                return Content("false");
+            }
+            else
+            {
+                return Content("true");
+            }
         }
     }
 }

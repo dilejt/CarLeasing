@@ -81,7 +81,7 @@ namespace CarLeasing.Controllers
                 zamowienie.koszt = samochod.cena + db.dystans.Find(order.id_dystans).ilosc + Math.Round(db.okres.Find(order.id_okres).ilosc / db.platnosc.Find(order.id_platnosc).ilosc / 100 * samochod.cena, 2);
                 db.zamowienie.Add(zamowienie);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","ClientPanel");
             }
 
             return View(order);
